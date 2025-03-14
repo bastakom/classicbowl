@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
+
+$font-primary: "Figtree", sans-serif;
+
+// Font / Size
+
+h3,
+h4,
+h5,
+span,
+button,
+p {
+  font-family: $font-primary;
+}
+
+h1,
+h2,
+a {
+  font-family: $font-primary;
+}
