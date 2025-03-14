@@ -5,18 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Hamburger from "hamburger-react";
-import { useParams, usePathname } from "next/navigation";
-import { Socials } from "../socials/socials";
 
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { SubMenuIcons } from "../submenu-icons/submenu-icons";
@@ -47,11 +43,9 @@ export const Navigation = ({ props }: HeaderProps) => {
     setMenuOpen(!open);
   };
 
-  const router = useParams();
-  const path = usePathname();
   return (
     <nav
-      className={`fixed w-full items-center flex justify-between top-0 px-5 lg:pl-14 py-6 z-30 lg:mt-10`}
+      className={`fixed w-full items-center flex justify-between  px-5 lg:pl-14  z-30 lg:mt-2`}
       style={{
         background: `${
           props.transparent ? "transparent" : props.header_bg_color.color
@@ -133,9 +127,6 @@ export const Navigation = ({ props }: HeaderProps) => {
               </NavigationMenu>
             );
           })}
-        </div>
-        <div className="hidden lg:flex">
-          <Socials props={props.fields} color={props.header_text_color} />
         </div>
       </div>
 
