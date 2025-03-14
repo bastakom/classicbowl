@@ -7,7 +7,19 @@ import { useState } from "react";
 import Hamburger from "hamburger-react";
 import { useParams, usePathname } from "next/navigation";
 import { Socials } from "../socials/socials";
-import { BiSolidDownArrow } from "react-icons/bi";
+
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { SubMenuIcons } from "../submenu-icons/submenu-icons";
 
 interface HeaderProps {
   props: {
@@ -60,27 +72,65 @@ export const Navigation = ({ props }: HeaderProps) => {
         <div className="flex">
           {props.meny.map((item: LinkTypes) => {
             return (
-              <Link
-                key={item._uid}
-                href={item.link.cached_url}
-                style={{
-                  color:
-                    path === `/${item.link.cached_url}`
-                      ? ""
-                      : props.header_text_color.color,
-                }}
-                className={`flex items-center gap-2 px-5 py-2 font-bold text-[18px] ${
-                  router.slug === item.link.cached_url ? "active" : ""
-                }`}
-              >
-                {item.title}
-                {item.submenu_restaurant && (
-                  <BiSolidDownArrow aria-hidden="true" fontSize={14} />
-                )}
-                {item.submenu_activities && (
-                  <BiSolidDownArrow aria-hidden="true" fontSize={14} />
-                )}
-              </Link>
+              <NavigationMenu>
+                <NavigationMenuList>
+                  {item.submenu_restaurant ? (
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger>
+                        {item.title}
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent className=" gap-4 bg-white shadow-lg rounded-md p-4">
+                        <NavigationMenuLink>
+                          <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
+                            {item.submenu?.map((el: any) => (
+                              <Link
+                                href={el.link.cached_url}
+                                className="flex  items-center justify-between px-4 py-2 hover:bg-gray-100"
+                              >
+                                <NavigationMenuLink key={el.title}>
+                                  {el.title}
+                                </NavigationMenuLink>
+                                <SubMenuIcons props={el} />
+                              </Link>
+                            ))}
+                          </ul>
+                        </NavigationMenuLink>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  ) : item.submenu_activities ? (
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger>
+                        {item.title}
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent className=" gap-4 bg-white shadow-lg rounded-md p-4">
+                        <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
+                          {item.submenu?.map((el: any) => (
+                            <Link
+                              href={el.link.cached_url}
+                              className="flex  items-center justify-between px-4 py-2 hover:bg-gray-100"
+                            >
+                              <NavigationMenuLink key={el.title}>
+                                {el.title}
+                              </NavigationMenuLink>
+                              <SubMenuIcons props={el} />
+                            </Link>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  ) : (
+                    <NavigationMenuItem>
+                      <Link href="/docs" legacyBehavior passHref>
+                        <NavigationMenuLink
+                          className={navigationMenuTriggerStyle()}
+                        >
+                          {item.title}
+                        </NavigationMenuLink>
+                      </Link>
+                    </NavigationMenuItem>
+                  )}
+                </NavigationMenuList>
+              </NavigationMenu>
             );
           })}
         </div>
