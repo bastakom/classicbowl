@@ -79,12 +79,12 @@ export const Navigation = ({ props }: HeaderProps) => {
                             {item.submenu?.map((el: any) => (
                               <Link
                                 href={el.link.cached_url}
-                                className="flex  items-center justify-between px-4 py-2 hover:bg-gray-100"
+                                className="flex  items-center gap-2 px-4 py-2 hover:bg-gray-100"
                               >
+                                <SubMenuIcons props={el} />
                                 <NavigationMenuLink key={el.title}>
                                   {el.title}
                                 </NavigationMenuLink>
-                                <SubMenuIcons props={el} />
                               </Link>
                             ))}
                           </ul>
@@ -101,12 +101,12 @@ export const Navigation = ({ props }: HeaderProps) => {
                           {item.submenu?.map((el: any) => (
                             <Link
                               href={el.link.cached_url}
-                              className="flex  items-center justify-between px-4 py-2 hover:bg-gray-100"
+                              className="flex  items-center gap-2 px-4 py-2 hover:bg-gray-100"
                             >
+                              <SubMenuIcons props={el} />
                               <NavigationMenuLink key={el.title}>
                                 {el.title}
                               </NavigationMenuLink>
-                              <SubMenuIcons props={el} />
                             </Link>
                           ))}
                         </ul>
