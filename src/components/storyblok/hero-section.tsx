@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { LinkTypes } from "@/types/IfLinkInterface";
 import { Button } from "../ui/button";
-import { useParams, useRouter } from "next/navigation";
 
 interface HeroProps {
   blok: {
@@ -30,22 +29,19 @@ interface HeroProps {
 }
 
 export const HeroSection = ({ blok }: HeroProps) => {
-  const router = useParams();
   return (
     <div
       {...storyblokEditable}
       className={`h-full w-full flex flex-col justify-center mx-auto`}
     >
       <div
-        className={`relative ${
-          blok?.video
+        className={`relative ${blok?.video
             ? "h-full"
             : blok.small_hero
-            ? "h-[50vh] lg:min-h-[50vh]"
-            : "h-full lg:min-h-[90vh]"
-        } justify-center flex items-center ${
-          blok.frame && "container-section mt-20"
-        }`}
+              ? "h-[50vh] lg:min-h-[50vh]"
+              : "h-full lg:min-h-[90vh]"
+          } justify-center flex items-center ${blok.frame && "container-section mt-20"
+          }`}
       >
         <div
           className="absolute h-full w-full opacity-30"
