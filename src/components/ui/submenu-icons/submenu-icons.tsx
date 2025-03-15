@@ -1,4 +1,4 @@
-import { PiBowlingBallThin } from "react-icons/pi";
+import { PiBowlingBallLight } from "react-icons/pi";
 import { GiDart } from "react-icons/gi";
 import { GiPartyPopper } from "react-icons/gi";
 import { PiHamburgerLight } from "react-icons/pi";
@@ -14,7 +14,7 @@ export const SubMenuIcons = ({ props }: any) => {
         const Icons = (size: any) => {
           switch (item) {
             case "bowling":
-              return <PiBowlingBallThin fontSize={size.size} />;
+              return <PiBowlingBallLight fontSize={size.size} />;
             case "dart":
               return <GiDart fontSize={size.size} />;
             case "children_party":
