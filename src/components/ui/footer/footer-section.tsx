@@ -31,16 +31,16 @@ export const FooterSection = ({ props }: any) => {
         <div className="flex flex-col gap-5">
           <h3>ÖPPETTIDER</h3>
           <div className="flex flex-col text-[22px] ">
-            {props.opening_hours.map((item: any) => (
-              <div className="flex justify-between">
-                <span key={item._uid}>{item.day}</span>
-                <p key={item._uid}>{item.time}</p>
+            {props.opening_hours.map((item: any, i: number) => (
+              <div className="flex justify-between" key={i}>
+                <span>{item.day}</span>
+                <p>{item.time}</p>
               </div>
             ))}
           </div>
           <div className="flex flex-col mt-10 lg:mt-0 ">
-            {props.footer_menu.map((item: LinkTypes) => (
-              <Link key={item._uid} className="text-[22px] font-bold italic flex gap-2 items-center" href={item.link.cached_url}>
+            {props.footer_menu.map((item: LinkTypes, i: number) => (
+              <Link key={i} className="text-[22px] font-bold italic flex gap-2 items-center" href={item.link.cached_url}>
                 <span>{item.title}</span>
                 <HiOutlineArrowSmallRight />
               </Link>
