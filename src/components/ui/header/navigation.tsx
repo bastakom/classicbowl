@@ -19,6 +19,7 @@ import {
 import { SubMenuIcons } from "../submenu-icons/submenu-icons";
 import { render } from "storyblok-rich-text-react-renderer";
 import { PreMenu } from "./pre-menu";
+import { TfiClose } from "react-icons/tfi";
 
 interface HeaderProps {
   props: {
@@ -53,6 +54,7 @@ export const Navigation = ({ props }: HeaderProps) => {
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
+    let isMobile = window.innerWidth <= 408;
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -75,6 +77,18 @@ export const Navigation = ({ props }: HeaderProps) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (submenuClick) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [submenuClick]);
 
   const handleOpenMenu = () => {
     setMenuOpen(!open);
@@ -184,9 +198,9 @@ export const Navigation = ({ props }: HeaderProps) => {
       </div>
 
       <div
-        className={`lg:hidden z-50 relative top-3 ${submenuClick && "hidden"} ${
-          hasBackground ? "text-black" : "text-white"
-        }`}
+        className={`lg:hidden z-50 relative top-3  ${
+          !hasBackground ? "text-white" : "text-black"
+        } ${open ? "hidden" : "block"}`}
       >
         <Hamburger toggled={open} toggle={setMenuOpen} />
       </div>
@@ -200,15 +214,18 @@ export const Navigation = ({ props }: HeaderProps) => {
           <PreMenu settings={props.pre_menu} />
         </div>
         <div className="px-5">
-          <Link href="/">
-            <Image
-              src={props.logo.filename}
-              alt={props.site_title}
-              width={150}
-              height={50}
-              className={`z-50 fixed top-20`}
-            />
-          </Link>
+          <div className="flex justify-between w-[100%] -mt-9">
+            <Link href="/">
+              <Image
+                src={props.logo.filename}
+                alt={props.site_title}
+                width={150}
+                height={50}
+                className={`z-50 fixed top-20`}
+              />
+            </Link>
+            <TfiClose className="text-white" onClick={handleOpenMenu} />
+          </div>
           <div className="flex flex-col mt-28 gap-4">
             {props.meny.map((item: LinkTypes) => {
               if (item.submenu_restaurant || item.submenu_activities) {
@@ -224,7 +241,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                     </Link>
 
                     {submenuClick && submenuType === item._uid ? (
-                      <div className="gap-2 fixed bg-[#660708] top-0 h-[90%] w-full px-5 py-14 left-0 flex-col flex text-[32px] z-50 transition-all duration-300 right-0">
+                      <div className="gap-2 fixed bg-[#660708] top-44 px-5 py-14 left-0 flex-col flex text-[32px] z-30 h-auto transition-all duration-300 right-0 ">
                         <div
                           className="flex gap-2 items-center text-[18px] text-white mt-0"
                           onClick={() => handleSubmenu(item)}
@@ -261,7 +278,13 @@ export const Navigation = ({ props }: HeaderProps) => {
               );
             })}
           </div>
-          <div className="border-t-[0.5px] border-white mt-20 w-[100%]">
+          <div
+            className={`${
+              submenuClick
+                ? "hidden"
+                : "block border-t-[0.5px] border-white mt-20 w-[100%]"
+            }`}
+          >
             <div className="flex flex-col gap-4 text-[18px] text-white mt-6 font-bold">
               <h3>{props.contact_title}</h3>
               <div>{render(props.adress)}</div>
