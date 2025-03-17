@@ -1,3 +1,6 @@
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -30,6 +33,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -62,6 +66,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -89,6 +94,7 @@ h2 {
   font-weight: 800;
   font-style: italic;
 }
+
 .render-blogg-content {
   p {
     font-size: 16px;
@@ -105,7 +111,14 @@ h2 {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.slick-track {
+  display: flex;
+  gap: 10px;
+  margin-left: -10px;
 }

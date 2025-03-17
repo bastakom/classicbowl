@@ -43,9 +43,9 @@ export const HeroSection = ({ blok }: HeroProps) => {
             ? "h-full"
             : blok.small_hero
             ? "h-[50vh] lg:min-h-[50vh]"
-            : "min-h-[90vh]"
+            : "h-full lg:min-h-[90vh]"
         } justify-center flex items-center ${
-          blok.frame && "container-section mt-20  mx-auto px-4"
+          blok.frame && "mx-auto px-4 container-section mt-20"
         }`}
       >
         <div
