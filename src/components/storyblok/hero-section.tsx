@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { LinkTypes } from "@/types/IfLinkInterface";
 import { Button } from "../ui/button";
-import { useParams } from "next/navigation";
 
 interface HeroProps {
   blok: {
@@ -30,7 +29,6 @@ interface HeroProps {
 }
 
 export const HeroSection = ({ blok }: HeroProps) => {
-  const router = useParams();
 
   return (
     <div
