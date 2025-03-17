@@ -5,7 +5,6 @@ import { render } from "storyblok-rich-text-react-renderer";
 import { HiOutlineArrowSmallRight } from "react-icons/hi2";
 
 export const Columns = ({ blok }: any) => {
-  console.log(blok);
   return (
     <div className="container-section p-container my-14">
       <div

@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { LinkTypes } from "@/types/IfLinkInterface";
 import { Button } from "../ui/button";
+import { useParams } from "next/navigation";
+
 
 interface HeroProps {
   blok: {
@@ -29,9 +31,12 @@ interface HeroProps {
 }
 
 export const HeroSection = ({ blok }: HeroProps) => {
+
+  const router = useParams();
+
   return (
     <div
-      {...storyblokEditable}
+      {...storyblokEditable(blok)}
       className={`h-full w-full flex flex-col justify-center mx-auto`}
     >
       <div
@@ -42,13 +47,19 @@ export const HeroSection = ({ blok }: HeroProps) => {
               : "h-full lg:min-h-[90vh]"
           } justify-center flex items-center ${blok.frame && "container-section mt-20"
           }`}
+            ? "min-h-[50vh] lg:min-h-[50vh]"
+            : "min-h-[90vh] lg:min-h-[90vh]"
+        } justify-center flex items-center ${
+          blok.frame && "container mx-auto px-4"
+        }`}
       >
         <div
-          className="absolute h-full w-full opacity-30"
+          className="absolute top-0 left-0 h-full w-full opacity-30"
           style={{ background: `${blok.overlay.color}` }}
         />
+
         <div
-          className="z-20 absolute flex flex-col gap-8 container mx-auto"
+          className="z-20 absolute flex flex-col gap-8 container mx-auto px-4"
           style={{
             alignItems: `${blok.text_center ? "center" : "start"}`,
             textAlign: `${blok.text_center ? "center" : "start"}`,
@@ -56,25 +67,36 @@ export const HeroSection = ({ blok }: HeroProps) => {
         >
           <div
             style={{ color: `${blok.text_color.color}` }}
-            className="gap-5 flex flex-col"
+            className="gap-5 flex flex-col text-center lg:text-left"
           >
-            <h3 className="uppercase">{blok.sub_text}</h3>
-            <h1 className={`${blok.text_center && "lg:max-w-[80%] mx-auto"}`}>
+            <h3 className="uppercase text-[20px] lg:text-3xl text-center">
+              {blok.sub_text}
+            </h3>
+            <h1
+              className={`text-[45px] lg:text-[80px] uppercase leading-normal font-extrabold text-center ${
+                blok.text_center && "lg:max-w-[80%] mx-auto"
+              }`}
+            >
               {blok.title}
             </h1>
-            {blok.content && <span>{blok.content}</span>}
+            {blok.content && (
+              <span className="text-base lg:text-lg">{blok.content}</span>
+            )}
           </div>
-          <div className="flex gap-2">
+
+          <div className="flex flex-col lg:flex-row gap-2 flex-wrap justify-center lg:justify-start">
             {blok.buttons.map((item: LinkTypes) => (
               <Button
                 key={item._uid}
                 variant={`${item.secondary_color ? "secondary" : "default"}`}
+                className="text-sm lg:text-base"
               >
                 <Link href="/">{item.title}</Link>
               </Button>
             ))}
           </div>
         </div>
+
         {blok.video ? (
           <video
             autoPlay
@@ -86,7 +108,7 @@ export const HeroSection = ({ blok }: HeroProps) => {
           </video>
         ) : (
           <Image
-            className="z-0"
+            className="z-0 object-cover"
             src={blok.bg_image.filename || ""}
             fill
             alt={blok.title}

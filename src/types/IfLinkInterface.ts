@@ -8,4 +8,5 @@ export interface LinkTypes {
   secondary_color?: boolean;
   submenu_restaurant?: boolean;
   submenu_activities?: boolean;
+  submenu: any;
 }
