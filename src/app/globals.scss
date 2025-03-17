@@ -95,10 +95,26 @@ h2 {
   }
 }
 
+/* Image block styling */
+
+.image-block-content {
+  p {
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+  }
+}
+
 /* Tabel styling */
 
 .display-left:last-of-type {
   border: 2px solid red !important;
+}
+
+.slick-track {
+  display: flex;
+  gap: 10px;
+  margin-left: -10px;
 }
 
 @layer base {
@@ -107,5 +123,13 @@ h2 {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@media screen and (min-width: 1020px) {
+  .image-block-content {
+    p {
+      font-size: 22px;
+    }
   }
 }
