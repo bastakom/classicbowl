@@ -12,7 +12,7 @@ import { CardColumns } from "./storyblok/card-columns-section";
 import { TableSection } from "./storyblok/table-section";
 import { TableColumnSection } from "./storyblok/table-column-section";
 import { ImageBlock } from "./storyblok/image-block";
-/* import { SliderComponent } from "./storyblok/slider-component"; */
+import { SliderComponent } from "./storyblok/slider-component";
 
 storyblokInit({
   components: {
@@ -27,7 +27,7 @@ storyblokInit({
     table: TableSection,
     table_columns: TableColumnSection,
     img_block: ImageBlock,
-    /*  slider: SliderComponent, */
+    slider: SliderComponent,
   },
 
   enableFallbackComponent: true,
