@@ -103,7 +103,7 @@ export const SliderComponent = ({ blok }: any) => {
         }
       >
         {blok.fields.map((item: any) => (
-          <Link href="/" className="h-[400px] w-[33%] relative">
+          <Link href="/" className="relative h-[400px] overflow-hidden">
             <div className="bg-black absolute opacity-30 top-0 h-full w-full z-10" />
             <div className="absolute flex-col gap-5 z-20 h-full w-full text-center flex justify-center items-center text-white">
               <h3 className="lg:text-[60px] font-bold">
