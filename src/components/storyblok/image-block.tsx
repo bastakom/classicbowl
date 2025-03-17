@@ -28,7 +28,7 @@ interface ImageBlockProps {
 
 export const ImageBlock = ({ blok }: ImageBlockProps) => {
   return (
-    <div className="grid lg:grid-cols-2 container-section  gap-5 mx-auto ">
+    <div className="grid lg:grid-cols-2 lg:container-section  lg:gap-5 mx-auto  lg:mb-20">
       {blok.image.map((item: ItemProps, index: number) =>
         item.image.filename == "" ? (
           <div
@@ -36,7 +36,7 @@ export const ImageBlock = ({ blok }: ImageBlockProps) => {
             style={{ backgroundColor: item.background_color.color }}
             className="w-full h-full"
           >
-            <div className="px-8 pt-40 lg:p-20 flex flex-col lg:justify-end h-[100%] gap-5 text-white">
+            <div className="px-5 pt-40 lg:p-20 flex flex-col lg:justify-end h-[100%] gap-5 text-white">
               <h3 className="text-[40px] lg:text-[60px] uppercase font-extrabold italic">
                 {item.title}
               </h3>
@@ -50,7 +50,10 @@ export const ImageBlock = ({ blok }: ImageBlockProps) => {
             </div>
           </div>
         ) : (
-          <div key={index} className="relative w-[100%] h-[531px] lg:h-[710px]">
+          <div
+            key={index}
+            className="hidden lg:flex relative w-[100%] h-[531px] lg:h-[710px]"
+          >
             <Image
               src={item.image.filename}
               alt={item.image.alt || "Image"}
