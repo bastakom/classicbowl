@@ -95,6 +95,16 @@ h2 {
   }
 }
 
+/* Image block styling */
+
+.image-block-content {
+  p {
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+  }
+}
+
 /* Tabel styling */
 
 .display-left:last-of-type {
@@ -107,5 +117,13 @@ h2 {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@media screen and (min-width: 1020px) {
+  .image-block-content {
+    p {
+      font-size: 22px;
+    }
   }
 }
