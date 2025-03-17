@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { LinkTypes } from "@/types/IfLinkInterface";
 import { Button } from "../ui/button";
-import { useParams } from "next/navigation";
 
 
 interface HeroProps {
@@ -32,8 +31,6 @@ interface HeroProps {
 
 export const HeroSection = ({ blok }: HeroProps) => {
 
-  const router = useParams();
-
   return (
     <div
       {...storyblokEditable(blok)}
@@ -41,17 +38,12 @@ export const HeroSection = ({ blok }: HeroProps) => {
     >
       <div
         className={`relative ${blok?.video
-            ? "h-full"
-            : blok.small_hero
-              ? "h-[50vh] lg:min-h-[50vh]"
-              : "h-full lg:min-h-[90vh]"
-          } justify-center flex items-center ${blok.frame && "container-section mt-20"
+          ? "h-full"
+          : blok.small_hero
+            ? "h-[50vh] lg:min-h-[50vh]"
+            : "h-full lg:min-h-[90vh]"
+          } justify-center flex items-center ${blok.frame && "mx-auto px-4 container-section mt-20"
           }`}
-            ? "min-h-[50vh] lg:min-h-[50vh]"
-            : "min-h-[90vh] lg:min-h-[90vh]"
-        } justify-center flex items-center ${
-          blok.frame && "container mx-auto px-4"
-        }`}
       >
         <div
           className="absolute top-0 left-0 h-full w-full opacity-30"
@@ -73,9 +65,8 @@ export const HeroSection = ({ blok }: HeroProps) => {
               {blok.sub_text}
             </h3>
             <h1
-              className={`text-[45px] lg:text-[80px] uppercase leading-normal font-extrabold text-center ${
-                blok.text_center && "lg:max-w-[80%] mx-auto"
-              }`}
+              className={`text-[45px] lg:text-[80px] uppercase leading-normal font-extrabold text-center ${blok.text_center && "lg:max-w-[80%] mx-auto"
+                }`}
             >
               {blok.title}
             </h1>
