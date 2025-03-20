@@ -4,7 +4,7 @@ export default defineConfig({
   e2e: {
     baseUrl: "http://localhost:3000",
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      return config;
     },
   },
 
@@ -13,5 +13,9 @@ export default defineConfig({
       framework: "next",
       bundler: "webpack",
     },
+  },
+
+  env: {
+    STORYBLOK_TOKEN: "ynniJA0bsuNAoQNBmP8kDQtt",
   },
 });
