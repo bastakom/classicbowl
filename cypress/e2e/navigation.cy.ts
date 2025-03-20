@@ -5,7 +5,7 @@ describe("navigation tests", () => {
     cy.get('[data-id="close-sidebar-menu"]').click();
   });
 
-  it("tests navigation", () => {
+  it("tests navigation mobile", () => {
     cy.viewport(375, 812);
     cy.visit("http://localhost:3000/");
     cy.get(".hamburger-react").click();

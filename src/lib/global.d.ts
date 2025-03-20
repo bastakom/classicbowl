@@ -1,8 +1,8 @@
-export {}; // Se till att filen behandlas som en modul
+export {};
 
 declare global {
   interface Window {
-    getData: (slug: string) => Promise<any>; // Anpassa typen efter din funktion
+    getData: (slug: string) => Promise<any>;
     getThemeSettings: () => Promise<any>;
   }
 }
