@@ -14,4 +14,8 @@ export default defineConfig({
       bundler: "webpack",
     },
   },
+
+  env: {
+    STORYBLOK_TOKEN: process.env.STORYBLOK_TOKEN || "default-token-value",
+  },
 });
