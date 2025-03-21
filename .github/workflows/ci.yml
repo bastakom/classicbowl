@@ -5,17 +5,15 @@ on:
     branches:
       - main
       - dev
-    
   pull_request:
     branches:
       - main
       - dev
-   
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,9 +22,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      
+
       - name: Install dependencies
-        run: npm install
+         run: npm install
+         run: npm ci
       
-      - name: Run tests
-        run: npm test
+      - name: Start the app
+        run: npm start &  # Start the application in the background
+
+      - name: Run Cypress tests from all files in cypress/e2e folder
+        uses: cypress-io/github-action@v6
+        with:
+          browser: firefox
+          start: npm start
+          working-directory: ./cypress/e2e  # Specific directory for the tests
+          spec: |
+            cypress/e2e/**/*.cy.ts  # Wildcard to run all tests in cypress/e2e and subfolders
