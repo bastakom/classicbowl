@@ -9,6 +9,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+     env:
+      STORYBLOK_TOKEN: ${{ secrets.STORYBLOK_TOKEN }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      MARKNAD_EMAIL: ${{ secrets.MARKNAD_EMAIL }}
 
     steps:
       - name: Checkout the repository
