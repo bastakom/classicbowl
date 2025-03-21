@@ -17,5 +17,7 @@ export default defineConfig({
 
   env: {
     STORYBLOK_TOKEN: process.env.STORYBLOK_TOKEN || "default-token-value",
+    RESEND_API_KEY: process.env.RESEND_API_KEY || "",
+    MARKNAD_EMAIL: process.env.MARKNAD_EMAIL || "",
   },
 });
