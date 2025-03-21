@@ -36,8 +36,9 @@ jobs:
         with:
           browser: firefox
           start: yarn start  # Use yarn start to run the app
-          working-directory: ./cypress/e2e  # Specify the location of the Cypress tests
+          working-directory: ./  # Use the root directory to find yarn.lock and node_modules
           spec: |
             cypress/e2e/**/*.cy.ts  # Wildcard to run all tests in cypress/e2e and subfolders
+
 
 
