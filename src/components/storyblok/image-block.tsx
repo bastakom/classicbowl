@@ -28,8 +28,8 @@ interface ImageBlockProps {
 
 export const ImageBlock = ({ blok }: ImageBlockProps) => {
   return (
-    <div className="grid lg:grid-cols-2 lg:container-section  lg:gap-5 mx-auto  lg:mb-20">
-      {blok?.image?.map((item: ItemProps, index: number) =>
+    <div className="grid lg:grid-cols-2 lg:w-[95%] lg:mx-auto  lg:gap-5 mx-auto  lg:mb-20">
+      {blok.image.map((item: ItemProps, index: number) =>
         item.image.filename == "" ? (
           <div
             key={index}
