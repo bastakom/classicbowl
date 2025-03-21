@@ -25,18 +25,19 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: yarn ci  
+      - name: Install dependencies with Yarn
+        run: yarn install  # Install dependencies using Yarn
 
-      - name: Start the app
-        run: yarn start &  
+      - name: Start the app in the background
+        run: yarn start &  # Start the application in the background using Yarn
 
       - name: Run Cypress tests from all files in cypress/e2e folder
         uses: cypress-io/github-action@v6
         with:
           browser: firefox
-          start: yarn start
-          working-directory: ./cypress/e2e 
+          start: yarn start  # Use yarn start to run the app
+          working-directory: ./cypress/e2e  # Specify the location of the Cypress tests
           spec: |
-            cypress/e2e/**/*.cy.ts  
+            cypress/e2e/**/*.cy.ts  # Wildcard to run all tests in cypress/e2e and subfolders
+
 
