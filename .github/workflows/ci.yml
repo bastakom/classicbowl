@@ -1,44 +1,41 @@
-name: CI Pipeline
-
-on:
-  push:
-    branches:
-      - main
-      - dev
-      - test
-  pull_request:
-    branches:
+name: CI/CD Pipeline
+on: 
+ push:
+  branches:
       - main
       - dev
       - test
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout the repository
         uses: actions/checkout@v4
-      
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 18.x
 
-      - name: Install dependencies with Yarn
-        run: yarn install  # Install dependencies using Yarn
+      - name: Install dependencies
+        run: yarn install
 
-      - name: Start the app in the background
-        run: yarn start &  # Start the application in the background using Yarn
+      - name: Build the Next.js app
+        run: yarn build
 
-      - name: Run Cypress tests from all files in cypress/e2e folder
+      - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
-          browser: firefox
-          start: yarn start  # Use yarn start to run the app
-          working-directory: ./  # Use the root directory to find yarn.lock and node_modules
-          spec: |
-            cypress/e2e/**/*.cy.ts  # Wildcard to run all tests in cypress/e2e and subfolders
+          start: npm start
+          browser: chrome
+
+      - name: Upload Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          path: cypress/screenshots
 
 
 
