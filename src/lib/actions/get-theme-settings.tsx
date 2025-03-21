@@ -7,6 +7,10 @@ export async function getThemeSettings() {
 
   const client = getStoryblokApi();
 
+  if (!client) {
+    throw new Error("Storyblok client is not initialized.");
+  }
+
   const data = await client.get(`cdn/stories/theme-settings`, sbParams);
 
   return data.data.story;

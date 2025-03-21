@@ -201,6 +201,7 @@ export const Navigation = ({ props }: HeaderProps) => {
         className={`lg:hidden z-50 relative top-3  ${
           !hasBackground ? "text-white" : "text-black"
         } ${open ? "hidden" : "block"}`}
+        data-id="open-menu"
       >
         <Hamburger toggled={open} toggle={setMenuOpen} />
       </div>
@@ -224,7 +225,11 @@ export const Navigation = ({ props }: HeaderProps) => {
                 className={`z-50 fixed top-20`}
               />
             </Link>
-            <TfiClose className="text-white" onClick={handleOpenMenu} />
+            <TfiClose
+              className="text-white"
+              onClick={handleOpenMenu}
+              data-id="close-sidebar-menu"
+            />
           </div>
           <div className="flex flex-col mt-28 gap-4">
             {props.meny.map((item: LinkTypes) => {
@@ -235,6 +240,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                       onClick={() => handleSubmenu(item)}
                       href={"/"}
                       className="text-white text-[30px] font-bold flex justify-between items-center gap-2"
+                      data-id="submenu"
                     >
                       <div>{item.title}</div>
                       <HiOutlineArrowRight fontSize={30} />
@@ -254,6 +260,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                             <Link
                               href={el.link.cached_url}
                               key={el._uid}
+                              data-id="submenu"
                               className="text-white text-[30px] uppercase font-bold"
                             >
                               {el.title}
