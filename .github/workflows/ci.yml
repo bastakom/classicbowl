@@ -24,7 +24,8 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm ci
+         run: npm install
+         run: npm ci
       
       - name: Start the app
         run: npm start &  # Start the application in the background
