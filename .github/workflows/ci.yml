@@ -1,7 +1,7 @@
 name: CI/CD Pipeline
 on: 
- push:
-  branches:
+  push:
+    branches:
       - main
       - dev
       - test
@@ -9,11 +9,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-     env:
+    env:
       STORYBLOK_TOKEN: ${{ secrets.STORYBLOK_TOKEN }}
       RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
       MARKNAD_EMAIL: ${{ secrets.MARKNAD_EMAIL }}
-
+      
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
@@ -40,6 +40,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: cypress/screenshots
-
 
 
