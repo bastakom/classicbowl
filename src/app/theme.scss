@@ -51,7 +51,8 @@ a {
 }
 // Buttons
 
-.primary-button {
+.primary-button,
+.text-btn {
   background: $primary;
   color: $primary-text;
   padding: 30px 45px;
@@ -61,6 +62,25 @@ a {
     background: $primary-hover;
   }
 }
+
+.text-btn {
+  background: $primary;
+  color: $primary-text;
+  padding: 20px 25px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+
+  &:hover {
+    background: $primary-hover;
+  }
+}
+
+.text-block-content {
+  p {
+    font-size: 22px;
+  }
+}
+
 .secondary-button {
   background: $secondary;
   color: $secondary-text;
