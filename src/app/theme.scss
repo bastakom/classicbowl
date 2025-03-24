@@ -66,6 +66,18 @@ a {
 .text-btn {
   background: $primary;
   color: $primary-text;
+  padding: 10px 15px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+
+  &:hover {
+    background: $primary-hover;
+  }
+}
+
+.text-btn {
+  background: $primary;
+  color: $primary-text;
   padding: 20px 25px;
   transition: all 0.3s ease-in-out;
   text-align: center;
