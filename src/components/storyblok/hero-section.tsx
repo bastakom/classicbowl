@@ -29,7 +29,6 @@ interface HeroProps {
 }
 
 export const HeroSection = ({ blok }: HeroProps) => {
-
   return (
     <div
       {...storyblokEditable(blok)}

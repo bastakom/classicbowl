@@ -13,6 +13,9 @@ import { TableSection } from "./storyblok/table-section";
 import { TableColumnSection } from "./storyblok/table-column-section";
 import { ImageBlock } from "./storyblok/image-block";
 import { SliderComponent } from "./storyblok/slider-component";
+import { FAQSection } from "./storyblok/faq-section";
+import { PriceBlock } from "./storyblok/price-block";
+
 
 storyblokInit({
   components: {
@@ -28,6 +31,8 @@ storyblokInit({
     table_columns: TableColumnSection,
     img_block: ImageBlock,
     slider: SliderComponent,
+    faq: FAQSection,
+    price_block: PriceBlock,
   },
 
   enableFallbackComponent: true,

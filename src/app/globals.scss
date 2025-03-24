@@ -123,6 +123,17 @@ h2 {
   overflow-x: hidden;
 }
 
+.render-table-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

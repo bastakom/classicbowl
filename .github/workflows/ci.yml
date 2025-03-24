@@ -1,0 +1,43 @@
+name: CI/CD Pipeline
+on: 
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      STORYBLOK_TOKEN: ${{ secrets.STORYBLOK_TOKEN }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      MARKNAD_EMAIL: ${{ secrets.MARKNAD_EMAIL }}
+      
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build the Next.js app
+        run: yarn build
+
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm start
+          browser: chrome
+
+      - name: Upload Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          path: cypress/screenshots
+
+
