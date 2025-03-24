@@ -1,6 +1,7 @@
 describe("navigation tests", () => {
   it("test opening and closing sidebar", () => {
-    cy.visit(Cypress.env("baseUrl") || "http://localhost:3000/");
+    const baseUrl = Cypress.env("baseUrl") || "http://localhost:3000/";
+    cy.visit(baseUrl);
     cy.get(".hamburger-react").click();
     cy.get('[data-id="close-sidebar-menu"]').click();
   });
