@@ -2,7 +2,6 @@ import Link from "next/link";
 import { render } from "storyblok-rich-text-react-renderer";
 
 export const TextBtn = ({ blok }: any) => {
-  console.log(blok);
   return (
     <div className="flex flex-col lg:flex-row mx-auto lg:w-[90%] gap-10 p-6 lg:p-10">
       <div className="lg:w-[50%] text-block-content">
