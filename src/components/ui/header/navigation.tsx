@@ -237,7 +237,9 @@ export const Navigation = ({ props }: HeaderProps) => {
                 return (
                   <div key={item._uid}>
                     <Link
-                      onClick={() => handleSubmenu(item)}
+                      onClick={() => {
+                        handleSubmenu(item);
+                      }}
                       href={"/"}
                       className="text-white text-[30px] font-bold flex justify-between items-center gap-2"
                       data-id="submenu"
@@ -250,7 +252,9 @@ export const Navigation = ({ props }: HeaderProps) => {
                       <div className="gap-2 fixed bg-[#660708] top-44 px-5 py-14 left-0 flex-col flex text-[32px] z-30 h-auto transition-all duration-300 right-0 ">
                         <div
                           className="flex gap-2 items-center text-[18px] text-white mt-0"
-                          onClick={() => handleSubmenu(item)}
+                          onClick={() => {
+                            handleSubmenu(item);
+                          }}
                         >
                           <IoIosArrowBack />
                           <div>Tillbaka</div>
@@ -262,6 +266,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                               key={el._uid}
                               data-id="submenu"
                               className="text-white text-[30px] uppercase font-bold"
+                              onClick={handleOpenMenu}
                             >
                               {el.title}
                             </Link>
