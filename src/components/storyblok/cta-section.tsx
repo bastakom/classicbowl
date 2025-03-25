@@ -27,7 +27,7 @@ export const CTA = ({ blok }: any) => {
             }`,
           }}
         >
-          <div className="flex flex-col gap-5 text-center lg:max-w-[50%]">
+          <div className="flex flex-col gap-5 text-center max-w-[90%] lg:max-w-[50%]">
             <h4>{blok?.sub_title}</h4>
             <h2>{blok?.title}</h2>
             <div>

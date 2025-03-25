@@ -37,15 +37,15 @@ export const ImageBlock = ({ blok }: ImageBlockProps) => {
             className="w-full h-full"
           >
             <div className="px-5 pt-40 lg:p-20 flex flex-col lg:justify-end h-[100%] gap-5 text-white">
-              <h3 className="text-[40px] lg:text-[60px] uppercase font-extrabold italic">
+              <h3 className="text-[40px] lg:text-[60px] uppercase font-extrabold italic ">
                 {item.title}
               </h3>
               <div className="image-block-content">{render(item.content)}</div>
-              <div className="flex gap-2 items-center pb-10 lg:pb-0 justify-end lg:justify-start">
+              <div className="flex gap-2 items-center pb-10 lg:pb-0 justify-end lg:justify-start group cursor-pointer">
                 <Link href={item.link.cached_url} className="text-[16px] ">
                   {item.link_title}
                 </Link>
-                <ArrowRight />
+                <ArrowRight className="transition-transform duration-300 ease-in-out group-hover:translate-x-2" />
               </div>
             </div>
           </div>
