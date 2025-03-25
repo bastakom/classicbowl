@@ -98,6 +98,17 @@ h2 {
   }
 }
 
+.menu-content {
+  p {
+    span {
+      font-size: 16px;
+      font-weight: 400;
+      font-style: italic;
+      text-align: center;
+      display: block;
+    }
+  }
+}
 /* Image block styling */
 
 .image-block-content {
@@ -148,6 +159,15 @@ h2 {
   .image-block-content {
     p {
       font-size: 22px;
+    }
+  }
+
+  .menu-content {
+    p {
+      span {
+        display: block;
+        text-align: start;
+      }
     }
   }
 }

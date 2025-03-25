@@ -25,7 +25,7 @@ export const Columns = ({ blok }: any) => {
             }`}
             key={item._uid}
           >
-            <h2 className=" text-[35px]">{item.title}</h2>
+            <h2 className="uppercase text-[35px]">{item.title}</h2>
             <span
               className={`${blok.half_width && "lg:max-w-[50%]"} ${
                 blok?.text_center && "mx-auto"

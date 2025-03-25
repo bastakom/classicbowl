@@ -17,6 +17,7 @@ import { TextBtn } from "./storyblok/text-btn";
 import { FAQSection } from "./storyblok/faq-section";
 import { PriceBlock } from "./storyblok/price-block";
 import { DropdownContent } from "./storyblok/dropdown-content";
+import { MenuBlock } from "./storyblok/menu-block";
 
 storyblokInit({
   components: {
@@ -36,6 +37,7 @@ storyblokInit({
     faq: FAQSection,
     price_block: PriceBlock,
     dropdown: DropdownContent,
+    menu_block: MenuBlock,
   },
 
   enableFallbackComponent: true,
