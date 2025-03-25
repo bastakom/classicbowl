@@ -1,6 +1,6 @@
 export const PriceBlock = ({ blok }: any) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-10 lg:mt-0">
       <div className="flex justify-center">
         <h2 className="text-[25px] font-bold pb-4">{blok.title}</h2>
       </div>
