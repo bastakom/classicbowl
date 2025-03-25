@@ -9,7 +9,6 @@ export const TextBtn = ({ blok }: any) => {
       </div>
       <Link
         href={blok?.link?.cached_url}
-        style={{ backgroundColor: blok?.button_bg.color }}
         className="text-btn rounded-[70px] h-[60px] w-[60%] lg:w-[15%]"
       >
         {blok?.link_title}
