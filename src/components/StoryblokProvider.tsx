@@ -15,7 +15,7 @@ import { ImageBlock } from "./storyblok/image-block";
 import { SliderComponent } from "./storyblok/slider-component";
 import { FAQSection } from "./storyblok/faq-section";
 import { PriceBlock } from "./storyblok/price-block";
-
+import { DropdownContent } from "./storyblok/dropdown-content";
 
 storyblokInit({
   components: {
@@ -33,6 +33,7 @@ storyblokInit({
     slider: SliderComponent,
     faq: FAQSection,
     price_block: PriceBlock,
+    dropdown: DropdownContent,
   },
 
   enableFallbackComponent: true,

@@ -14,13 +14,17 @@ export const ImageSection = ({ blok }: any) => {
     >
       <div className="lg:h-[600px] grid gap-14 grid-cols-1 lg:grid-cols-2">
         <div
-          className={`w-full h-[350px] lg:h-full relative ${blok.image_right && "order-1"}`}
+          className={`w-full h-[350px] lg:h-full relative ${
+            blok.image_right && "order-1"
+          }`}
         >
           <Image
             src={blok.image.filename || ""}
             alt={blok.title}
             fill
-            className={`object-cover ${blok.image_right ? "p-0 lg:p-10 pr-0" : "p-0 lg:p-10 pl-0"}`}
+            className={`object-cover ${
+              blok.image_right ? "p-0 lg:p-10 pr-0" : "p-0 lg:p-10 pl-0"
+            }`}
           />
         </div>
         <div

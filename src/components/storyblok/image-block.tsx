@@ -37,7 +37,7 @@ export const ImageBlock = ({ blok }: ImageBlockProps) => {
             className="w-full h-full"
           >
             <div className="px-5 pt-40 lg:p-20 flex flex-col lg:justify-end h-[100%] gap-5 text-white">
-              <h3 className="text-[40px] lg:text-[60px] uppercase font-extrabold italic">
+              <h3 className="text-[40px] lg:text-[60px] uppercase font-extrabold italic ">
                 {item.title}
               </h3>
               <div className="image-block-content">{render(item.content)}</div>
