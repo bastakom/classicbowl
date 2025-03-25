@@ -66,7 +66,7 @@ export const HeroSection = ({ blok }: HeroProps) => {
             </h3>
             <h1
               className={`text-[45px] lg:text-[80px] uppercase leading-normal font-extrabold text-center ${
-                blok.text_center && "lg:max-w-[80%] mx-auto"
+                blok.text_center && "lg:max-w-[80%] mx-auto "
               }`}
             >
               {blok.title}
