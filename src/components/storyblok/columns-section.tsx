@@ -35,10 +35,13 @@ export const Columns = ({ blok }: any) => {
             </span>
             <Link
               href={item?.link?.cached_url || ""}
-              className="flex gap-2 items-center font-extrabold"
+              className="flex gap-2 items-center font-extrabold group"
             >
               <div>{item?.link_title}</div>
-              <HiOutlineArrowSmallRight />
+              <HiOutlineArrowSmallRight
+                className="transition-transform duration-300 ease-in-out group-hover:translate-x-2"
+                fontSize={24}
+              />
             </Link>
           </div>
         ))}
