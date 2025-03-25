@@ -18,6 +18,7 @@ import { FAQSection } from "./storyblok/faq-section";
 import { PriceBlock } from "./storyblok/price-block";
 import { DropdownContent } from "./storyblok/dropdown-content";
 import { InfoBlock } from "./storyblok/info-block";
+import { LunchBlock } from "./storyblok/lunch-block";
 
 storyblokInit({
   components: {
@@ -38,6 +39,7 @@ storyblokInit({
     price_block: PriceBlock,
     dropdown: DropdownContent,
     info_block: InfoBlock,
+    lunch_block: LunchBlock,
   },
 
   enableFallbackComponent: true,
