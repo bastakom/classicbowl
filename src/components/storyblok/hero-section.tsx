@@ -83,7 +83,7 @@ export const HeroSection = ({ blok }: HeroProps) => {
                 variant={`${item.secondary_color ? "secondary" : "default"}`}
                 className="text-sm lg:text-base"
               >
-                <Link href="/">{item.title}</Link>
+                <Link href={item.link.cached_url}>{item.title}</Link>
               </Button>
             ))}
           </div>
