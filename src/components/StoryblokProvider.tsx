@@ -17,6 +17,7 @@ import { TextBtn } from "./storyblok/text-btn";
 import { FAQSection } from "./storyblok/faq-section";
 import { PriceBlock } from "./storyblok/price-block";
 import { DropdownContent } from "./storyblok/dropdown-content";
+import { MenuBlock } from "./storyblok/menu-block";
 import { InfoBlock } from "./storyblok/info-block";
 import { LunchBlock } from "./storyblok/lunch-block";
 
@@ -38,6 +39,7 @@ storyblokInit({
     faq: FAQSection,
     price_block: PriceBlock,
     dropdown: DropdownContent,
+    menu_block: MenuBlock,
     info_block: InfoBlock,
     lunch_block: LunchBlock,
   },

@@ -6,7 +6,7 @@ import { HiOutlineArrowSmallRight } from "react-icons/hi2";
 
 export const Columns = ({ blok }: any) => {
   return (
-    <div className="container-section p-container my-14">
+    <div className="container-section p-container lg:my-14">
       <div
         className={`grid gap-10 py-6 ${
           blok.columns === "4"
@@ -25,7 +25,7 @@ export const Columns = ({ blok }: any) => {
             }`}
             key={item._uid}
           >
-            <h2 className=" text-[35px]">{item.title}</h2>
+            <h2 className="uppercase text-[35px]">{item.title}</h2>
             <span
               className={`${blok.half_width && "lg:max-w-[50%]"} ${
                 blok?.text_center && "mx-auto"
