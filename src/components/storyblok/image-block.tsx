@@ -37,7 +37,6 @@ export const ImageBlock = ({ blok }: ImageBlockProps) => {
             className="w-full h-full"
           >
             <div className="px-5 pt-40 lg:p-20 flex flex-col lg:justify-end h-[100%] gap-5 text-white ">
-              {/* Första länken: Den stora länken som omsluter allt innehåll */}
               <Link
                 href={item.link.cached_url}
                 style={{ textTransform: "none" }}
@@ -50,8 +49,6 @@ export const ImageBlock = ({ blok }: ImageBlockProps) => {
                   {render(item.content)}
                 </div>
               </Link>
-
-              {/* Andra länken: En mindre länk för den specifika länken */}
               <div className="flex gap-2 items-center pb-10 lg:pb-0 justify-end lg:justify-start group cursor-pointer lg:pt-6 lg:px-8">
                 <Link href={item.link.cached_url} className="text-[16px]">
                   {item.link_title}
