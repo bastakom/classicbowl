@@ -6,6 +6,8 @@ export const MenuBlock = ({ blok }: any) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [selectedId, setSelectedId] = useState("");
 
+  console.log(blok);
+
   const handleDropdown = () => {
     setOpenDropdown(!openDropdown);
   };
@@ -15,11 +17,19 @@ export const MenuBlock = ({ blok }: any) => {
   };
 
   return (
-    <div className="flex justify-center py-10">
+    <div className="flex justify-center pt-10">
       {/*For desktop */}
-      <div className="hidden lg:grid grid-cols-2 text-white bg-[#660708] w-[70%] p-24 gap-12 rounded-xl">
+      <div
+        className={`hidden lg:grid grid-cols-2  w-[70%] p-24 gap-12 rounded-xl ${
+          blok.bg_color ? "bg-[#660708] text-white" : "bg-white text-black"
+        }`}
+      >
         {blok.field.map((item: any, index: number) => (
-          <div className={` ${index === 2 ? "-mt-72" : ""}`}>
+          <div
+            className={` ${index === 2 ? "-mt-72" : ""} ${
+              !blok.bg_color ? "-mt-44" : ""
+            }`}
+          >
             <div>
               <div className="text-[25px] uppercase font-bold italic">
                 {item.title}
