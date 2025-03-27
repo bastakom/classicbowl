@@ -240,7 +240,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                       onClick={() => {
                         handleSubmenu(item);
                       }}
-                      href={"/"}
+                      href={item.link.cached_url}
                       className="text-white text-[30px] font-bold flex justify-between items-center gap-2"
                       data-id="submenu"
                     >
