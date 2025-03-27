@@ -1,11 +1,11 @@
 $primary: #1e40af;
 $primary-text: #fff;
-$primary-hover: #303000;
+$primary-hover: rgb(46, 84, 208);
 $forground: #f8f8f8;
 
 $secondary: rgba(255, 255, 255, 0);
-$secondary-text: $primary-text;
-$secondary-hover: #303000;
+$secondary-text: #fff;
+$secondary-hover: rgb(10, 11, 15);
 
 $h1: 85px;
 $h1-mobile: 40px;
@@ -101,8 +101,9 @@ a {
   border: 1px solid white;
 
   &:hover {
-    background: $secondary-hover;
-    color: $secondary;
+    border: 1px solid $secondary-hover;
+    background-color: $secondary-hover;
+    color: $secondary-text;
   }
 }
 

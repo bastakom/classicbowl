@@ -40,7 +40,7 @@ export const HeroSection = ({ blok }: HeroProps) => {
             ? "h-full"
             : blok.small_hero
             ? "h-[50vh] lg:min-h-[50vh]"
-            : "h-full lg:min-h-[90vh]"
+            : "min-h-[90vh]"
         } justify-center flex items-center ${
           blok.frame && "mx-auto px-4 container-section mt-20"
         }`}
@@ -51,7 +51,7 @@ export const HeroSection = ({ blok }: HeroProps) => {
         />
 
         <div
-          className="z-20 absolute flex flex-col gap-8 container mx-auto px-4"
+          className="z-20 lg:absolute flex flex-col gap-8 container mx-auto px-4"
           style={{
             alignItems: `${blok.text_center ? "center" : "start"}`,
             textAlign: `${blok.text_center ? "center" : "start"}`,
