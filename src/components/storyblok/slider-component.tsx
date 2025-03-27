@@ -102,8 +102,8 @@ export const SliderComponent = ({ blok }: any) => {
           handleSliderChange(currentSlide, blok.fields.length)
         }
       >
-        {blok.fields.map((item: any) => (
-          <Link href="/" className="h-[400px] w-[33%] relative">
+        {blok.fields.map((item: any, index: number) => (
+          <Link href="/" className="h-[400px] w-[33%] relative" key={index}>
             <div className="bg-black absolute opacity-30 top-0 h-full w-full z-10" />
             <div
               className={`${
