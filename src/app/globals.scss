@@ -145,6 +145,18 @@ h2 {
   }
 }
 
+.form-info {
+  width: 100%;
+
+  p {
+    text-align: center;
+    margin-top: 1rem;
+    span {
+      font-size: 22px;
+      font-weight: 400;
+    }
+  }
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -169,5 +181,9 @@ h2 {
         text-align: start;
       }
     }
+  }
+
+  .form-info {
+    width: 50%;
   }
 }
