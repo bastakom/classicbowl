@@ -179,7 +179,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                     </NavigationMenuItem>
                   ) : (
                     <NavigationMenuItem>
-                      <Link href="/docs" legacyBehavior passHref>
+                      <Link href={item.link.cached_url} legacyBehavior passHref>
                         <NavigationMenuLink
                           className={`${navigationMenuTriggerStyle()} ${
                             hasBackground ? "!text-black" : ""
