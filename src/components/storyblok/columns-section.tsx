@@ -35,7 +35,7 @@ export const Columns = ({ blok }: any) => {
             </span>
             <Link
               href={item?.link?.cached_url || ""}
-              className="flex gap-2 items-center font-extrabold group"
+              className="flex gap-2 items-center font-extrabold group text-[#1E40AF]"
             >
               <div>{item?.link_title}</div>
               <HiOutlineArrowSmallRight
