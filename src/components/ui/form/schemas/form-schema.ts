@@ -13,5 +13,6 @@ export const formSchema = z.object({
     .min(1, { message: "Fyll i fält" })
     .email("Email är inte korrekt"),
   phone: z.string().regex(phoneRegex, "Fyll i rätt nummer"),
+  foretag: z.string(),
   message: z.string(),
 });

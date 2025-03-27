@@ -9,6 +9,7 @@ const page = ({ blok, settings }: any) => (
           blok={nestedBlok}
           key={nestedBlok._uid}
           settings={settings}
+          props={blok}
         />
       ))}
   </div>
