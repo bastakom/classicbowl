@@ -103,7 +103,11 @@ export const SliderComponent = ({ blok }: any) => {
         }
       >
         {blok.fields.map((item: any, index: number) => (
-          <Link href="/" className="h-[400px] w-[33%] relative" key={index}>
+          <Link
+            href={item.link.cached_url}
+            className="h-[400px] w-[33%] relative"
+            key={index}
+          >
             <div className="bg-black absolute opacity-30 top-0 h-full w-full z-10" />
             <div
               className={`${
