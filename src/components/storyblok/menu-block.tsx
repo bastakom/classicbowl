@@ -6,8 +6,6 @@ export const MenuBlock = ({ blok }: any) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [selectedId, setSelectedId] = useState("");
 
-  console.log(blok);
-
   const handleDropdown = () => {
     setOpenDropdown(!openDropdown);
   };

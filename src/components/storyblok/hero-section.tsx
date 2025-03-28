@@ -76,7 +76,7 @@ export const HeroSection = ({ blok }: HeroProps) => {
             )}
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-2 flex-wrap justify-center lg:justify-start">
+          <div className="flex flex-col lg:flex-row gap-2 flex-wrap justify-center ">
             {blok.buttons.map((item: LinkTypes) => (
               <Button
                 key={item._uid}
