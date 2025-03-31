@@ -3,7 +3,7 @@
 import { LinkTypes } from "@/types/IfLinkInterface";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Hamburger from "hamburger-react";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { IoIosArrowBack } from "react-icons/io";
@@ -52,43 +52,31 @@ export const Navigation = ({ props }: HeaderProps) => {
   const [submenuClick, setSubmenuClick] = useState(false);
   const [submenuType, setSubmenuType] = useState<string | null>(null);
 
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let isMobile = window.innerWidth <= 408;
+  function handleWheelEvent(event: any) {
+    const header = document.getElementById('header');
+    const scrollPosition = window.scrollY;
+    const threshold = 80; // The 80px threshold you wanted
 
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY <= 40) {
-        setIsMenuVisible(true);
+    if (header) {
+      if (event.deltaY > 10 && scrollPosition > threshold) {
+        // Scrolling down and past threshold
         setHasBackground(false);
-      } else if (currentScrollY > lastScrollY) {
         setIsMenuVisible(false);
-      } else {
-        setIsMenuVisible(true);
+      } else if (event.deltaY < 0 || scrollPosition <= threshold) {
+        // Scrolling up or within threshold
         setHasBackground(true);
+        header.style.top = "0";
+        setIsMenuVisible(true);
+
+        // If at or near top (within threshold)
+        if (scrollPosition <= threshold) {
+          header.style.top = "80px";
+          setHasBackground(false);
+        }
       }
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (submenuClick) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
     }
+  }
 
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [submenuClick]);
 
   const handleOpenMenu = () => {
     setMenuOpen(!open);
@@ -99,15 +87,16 @@ export const Navigation = ({ props }: HeaderProps) => {
     setSubmenuType(item._uid);
   };
 
+  window.addEventListener('wheel', handleWheelEvent)
+
   return (
     <nav
-      className={`fixed w-full items-center flex justify-between px-5 lg:pl-14 z-30 transition-all duration-300 ${
-        isMenuVisible ? "top-0 opacity-100" : "-top-20 opacity-0"
-      } ${
-        hasBackground
+      className={`fixed top-20 w-full items-center flex justify-between px-5 lg:pl-14 z-30 transition-all duration-300 ${isMenuVisible ? "top-0 opacity-100" : "-top-20 opacity-0"
+        } ${hasBackground
           ? "bg-white lg:mt-0 py-4 lg:py-5 "
-          : "bg-transparent mt-16 lg:mt-20"
-      }`}
+          : "bg-transparent top-0"
+        }`}
+      id="header"
     >
       <Link href="/">
         <Image
@@ -115,9 +104,8 @@ export const Navigation = ({ props }: HeaderProps) => {
           alt={props.site_title}
           width={150}
           height={50}
-          className={`z-50 ${
-            hasBackground ? "absolute top-4" : "fixed top-16"
-          } ${open ? "hidden" : "block"}`}
+          className={`z-50 ${hasBackground ? "absolute top-4" : "fixed top-16"
+            } ${open ? "hidden" : "block"}`}
         />
       </Link>
 
@@ -181,9 +169,8 @@ export const Navigation = ({ props }: HeaderProps) => {
                     <NavigationMenuItem>
                       <Link href={item.link.cached_url} legacyBehavior passHref>
                         <NavigationMenuLink
-                          className={`${navigationMenuTriggerStyle()} ${
-                            hasBackground ? "!text-black" : ""
-                          }`}
+                          className={`${navigationMenuTriggerStyle()} ${hasBackground ? "!text-black" : ""
+                            }`}
                         >
                           {item.title}
                         </NavigationMenuLink>
@@ -198,18 +185,16 @@ export const Navigation = ({ props }: HeaderProps) => {
       </div>
 
       <div
-        className={`lg:hidden z-50 relative top-3  ${
-          !hasBackground ? "text-white" : "text-black"
-        } ${open ? "hidden" : "block"}`}
+        className={`lg:hidden z-50 relative top-3  ${!hasBackground ? "text-white" : "text-black"
+          } ${open ? "hidden" : "block"}`}
         data-id="open-menu"
       >
         <Hamburger toggled={open} toggle={setMenuOpen} />
       </div>
 
       <div
-        className={`gap-2 fixed bg-[#660708] -top-20 h-full w-full mt-20  py-14 left-0 flex-col flex text-[32px] z-20 transition-all duration-300 right-0 overflow-y-auto ${
-          !open ? "translate-x-full" : "translate-x-0"
-        }`}
+        className={`gap-2 fixed bg-[#660708] -top-20 h-full w-full mt-20  py-14 left-0 flex-col flex text-[32px] z-20 transition-all duration-300 right-0 overflow-y-auto ${!open ? "translate-x-full" : "translate-x-0"
+          }`}
       >
         <div className="relative -top-10 border-b-[0.5px] border-white w-[100%]">
           <PreMenu settings={props.pre_menu} />
@@ -291,11 +276,10 @@ export const Navigation = ({ props }: HeaderProps) => {
             })}
           </div>
           <div
-            className={`${
-              submenuClick
-                ? "hidden"
-                : "block border-t-[0.5px] border-white mt-20 w-[100%]"
-            }`}
+            className={`${submenuClick
+              ? "hidden"
+              : "block border-t-[0.5px] border-white mt-20 w-[100%]"
+              }`}
           >
             <div className="flex flex-col gap-4 text-[18px] text-white mt-6 font-bold">
               <h3>{props.contact_title}</h3>
