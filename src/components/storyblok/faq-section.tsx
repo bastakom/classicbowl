@@ -16,8 +16,8 @@ export const FAQSection = ({ blok }: any) => {
       <div className="rounded-[20px] my-14 mx-auto p-14 container-section bg-[#F5F3F4]">
         <h2 className="mb-12">{blok.title}</h2>
         <div>
-          {blok.fields.map((faq: any) => (
-            <Accordion type="single" collapsible>
+          {blok.fields.map((faq: any, i: number) => (
+            <Accordion type="single" collapsible key={i}>
               <AccordionItem value="item-1">
                 <AccordionTrigger>{faq.question}</AccordionTrigger>
                 <AccordionContent>
