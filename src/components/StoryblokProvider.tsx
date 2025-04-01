@@ -20,6 +20,7 @@ import { DropdownContent } from "./storyblok/dropdown-content";
 import { MenuBlock } from "./storyblok/menu-block";
 import { InfoBlock } from "./storyblok/info-block";
 import { LunchBlock } from "./storyblok/lunch-block";
+import { InfoForm } from "./info-and-form";
 
 storyblokInit({
   components: {
@@ -42,6 +43,7 @@ storyblokInit({
     menu_block: MenuBlock,
     info_block: InfoBlock,
     lunch_block: LunchBlock,
+    info_and_form: InfoForm,
   },
 
   enableFallbackComponent: true,
