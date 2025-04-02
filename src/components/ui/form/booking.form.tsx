@@ -76,7 +76,7 @@ export function Bookingform({ settings, blok, label }: any) {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4 my-14 lg:w-[70%] flex flex-col gap-5"
+            className="space-y-4 my-14 lg:w-[80%] flex flex-col gap-4"
           >
             <div>
               <FormField
@@ -138,7 +138,7 @@ export function Bookingform({ settings, blok, label }: any) {
                 <FormItem>
                   <FormLabel>{label}</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Skriv ditt meddelande" {...field} />
+                    <Textarea {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -151,20 +151,21 @@ export function Bookingform({ settings, blok, label }: any) {
                 onClick={() => handleCheckbox()}
                 checked={checkbox}
               />
-              <div className="grid gap-1.5 leading-none">
+              <div className="grid gap-1.5 ">
                 <label
                   htmlFor="terms1"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white"
+                  className="text-lg font-medium leading-[1.5rem] peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white"
                 >
                   Vi värnar om din integritet och hanterar dina uppgifter med
-                  största omsorg.
-                </label>
-                <p className="text-sm text-white">
-                  Läs mer om hur vi behandlar personuppgifter i vår{" "}
-                  <Link href={"/"} className="normal-case">
+                  största omsorg. Läs mer om hur vi behandlar personuppgifter i
+                  vår{" "}
+                  <Link
+                    href={"/"}
+                    className="normal-case text-lg font-extrabold not-italic"
+                  >
                     integritetspolicy.
                   </Link>
-                </p>
+                </label>
               </div>
             </div>
             <div className="flex justify-center">

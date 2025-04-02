@@ -178,14 +178,17 @@ export function ContactForm({ settings }: any) {
               <div className="grid gap-1.5 leading-none">
                 <label
                   htmlFor="terms1"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white"
+                  className="text-lg font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white"
                 >
                   Vi värnar om din integritet och hanterar dina uppgifter med
                   största omsorg.
                 </label>
-                <p className="text-sm text-white">
+                <p className="text-lg text-white">
                   Läs mer om hur vi behandlar personuppgifter i vår{" "}
-                  <Link href={"/"} className="normal-case">
+                  <Link
+                    href={"/"}
+                    className="normal-case text-lg font-extrabold not-italic"
+                  >
                     integritetspolicy.
                   </Link>
                 </p>
