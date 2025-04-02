@@ -9,15 +9,14 @@ export const InfoForm = ({ blok, settings }: any) => {
     >
       <div className="flex flex-col  text-white lg:px-48">
         <h2 className="text-[35px] font-extrabold uppercase italic">
-          {blok.title}
+          {blok?.title || ""}
         </h2>
-        <div className="mt-5">{render(blok.content)}</div>
+        <div className="mt-5">{render(blok?.content)}</div>
       </div>
-
       <Bookingform
         settings={settings}
         blok={blok}
-        label={blok?.label_textarea}
+        label={blok?.label_textarea ?? ""}
       />
     </div>
   );

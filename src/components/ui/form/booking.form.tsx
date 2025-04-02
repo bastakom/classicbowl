@@ -136,7 +136,8 @@ export function Bookingform({ settings, blok, label }: any) {
               name="message"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{label}</FormLabel>
+                  <FormLabel>{label || ""}</FormLabel>
+
                   <FormControl>
                     <Textarea {...field} />
                   </FormControl>
