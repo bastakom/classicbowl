@@ -18,11 +18,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { formSchema } from "./schemas/form-schema";
 import { Textarea } from "../textarea";
-import { render } from "storyblok-rich-text-react-renderer";
 import Link from "next/link";
 import { useState } from "react";
 
-export function Bookingform({ settings, blok }: any) {
+export function Bookingform({ settings, blok, label }: any) {
   const [checkbox, setCheckbox] = useState(false);
 
   const handleCheckbox = () => {
@@ -137,9 +136,7 @@ export function Bookingform({ settings, blok }: any) {
               name="message"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
-                    {settings.content.from_textarea_placeholder}
-                  </FormLabel>
+                  <FormLabel>{label}</FormLabel>
                   <FormControl>
                     <Textarea placeholder="Skriv ditt meddelande" {...field} />
                   </FormControl>
