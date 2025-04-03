@@ -11,7 +11,6 @@ import { useState } from "react";
 
 export const FooterSection = ({ props }: any) => {
   const [openDropdown, setOpenDropdown] = useState(false);
-  console.log(props);
 
   const handleDropdown = () => {
     setOpenDropdown(!openDropdown);
@@ -40,7 +39,7 @@ export const FooterSection = ({ props }: any) => {
           <div className="flex items-center gap-2 justify-center lg:justify-start">
             <Link
               href={`${props?.link?.cached_url}`}
-              className="text-[20px] lg:text-[22px] italic"
+              className="text-[20px] lg:text-[22px] italic !uppercase"
             >
               {props?.link_title}
             </Link>
@@ -49,13 +48,13 @@ export const FooterSection = ({ props }: any) => {
           <div className="flex flex-col">
             <Link
               href={`mailto:${props.mail}`}
-              className="text-[20px] lg:text-[22px] italic"
+              className="text-[20px] lg:text-[22px] italic !uppercase"
             >
               {props.mail}
             </Link>
             <Link
               href={`tel:${props.phone}`}
-              className="text-[20px] lg:text-[22px] italic"
+              className="text-[20px] lg:text-[22px] italic !uppercase"
             >
               {props.phone}
             </Link>

@@ -21,7 +21,7 @@ export const DropdownContent = ({ blok }: any) => {
                   {item.title}
                 </AccordionTrigger>
                 <AccordionContent className="flex justify-center">
-                  <span className="flex flex-col gap-2 render-table-content p-4 lg:p-0 lg:w-[60%] lg:mt-5">
+                  <span className="flex flex-col gap-2 render-table-content p-4 lg:p-0 lg:w-[60%] lg:mt-5 downcase-link hej">
                     {render(item.content)}
                   </span>
                 </AccordionContent>

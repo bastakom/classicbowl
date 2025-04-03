@@ -61,8 +61,12 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
                 }`}
               >
                 {item.menu_item.map((el: any) => (
-                  <div className="flex justify-between mb-6">
-                    <div>
+                  <div className={`flex justify-between mb-6 `}>
+                    <div
+                      className={`${
+                        blok.bigger_field ? "w-[50%]" : "w-[80%] hej"
+                      }`}
+                    >
                       <div className="text-[22px] font-semibold">
                         {el.title}
                       </div>

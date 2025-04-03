@@ -28,7 +28,9 @@ export const LunchBlock = ({ blok }: any) => {
         {item === 1
           ? blok.first_field.map((item: any, index: number) => (
               <div key={index}>
-                <h3 className="text-[25px] font-bold italic">{item.title}</h3>
+                <h3 className="text-[25px] font-bold italic uppercase">
+                  {item.title}
+                </h3>
                 <div className="text-[22px] font-semibold">{item.dish}</div>
                 <div className="mb-4">{item.description}</div>
                 <div className="text-[22px] font-semibold">
@@ -39,7 +41,9 @@ export const LunchBlock = ({ blok }: any) => {
             ))
           : blok.second_field.map((item: any, index: number) => (
               <div key={index}>
-                <h3 className="text-[25px] font-bold italic">{item.title}</h3>
+                <h3 className="text-[25px] font-bold italic uppercase">
+                  {item.title}
+                </h3>
                 <div className="text-[22px] font-semibold">{item.dish}</div>
                 <div className="mb-4">{item.description}</div>
                 <div className="text-[22px] font-semibold">
