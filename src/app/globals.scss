@@ -104,7 +104,13 @@ h2 {
 
 .menu-content {
   p {
-    span {
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+    display: block;
+
+    span,
+    i {
       font-size: 16px;
       font-weight: 400;
       font-style: italic;
