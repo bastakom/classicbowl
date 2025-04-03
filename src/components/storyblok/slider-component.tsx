@@ -84,7 +84,7 @@ export const SliderComponent = ({ blok }: any) => {
 
   return (
     <div className={`container-section my-14 flex flex-col gap-5 relative`}>
-      <h2 className="text-center">{blok.title}</h2>
+      <h2 className="text-center uppercase text-[25px]">{blok.title}</h2>
       {blok.fields.length > 3 && (
         <div className="flex justify-end gap-2">
           <PrevArrow
@@ -105,10 +105,15 @@ export const SliderComponent = ({ blok }: any) => {
         {blok.fields.map((item: any, index: number) => (
           <Link
             href={item.link.cached_url}
-            className="h-[400px] w-[33%] relative"
+            className="h-[400px] lg:h-[600px] w-[33%] relative"
             key={index}
           >
-            <div className="bg-black absolute opacity-30 top-0 h-full w-full z-10" />
+            <div
+              className={` ${
+                item.title &&
+                "bg-black absolute opacity-30 top-0 h-full w-full z-10"
+              }`}
+            />
             <div
               className={`${
                 item.title

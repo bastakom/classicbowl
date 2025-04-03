@@ -17,7 +17,11 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
 
   return (
     <div>
-      <div className={`flex justify-center pt-10  `}>
+      <div
+        className={`flex justify-center  ${
+          blok.bigger_field ? "pt-10" : "pt-10 lg:pt-20"
+        } `}
+      >
         {/*For desktop */}
         <div
           className={`hidden  rounded-xl ${
@@ -66,7 +70,7 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
                         {el.description}
                       </div>
                     </div>
-                    <div className="text-[22px] font-semibold">{el.price}</div>
+                    <div className="text-[22px] font-normal">{el.price}</div>
                   </div>
                 ))}
               </div>

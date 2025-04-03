@@ -22,10 +22,10 @@ export const Events = ({ blok }: any) => {
                 <span className="text-[#B71B2F] font-extrabold">
                   {item.date}
                 </span>
-                <h3 className="uppercase text-[30px] lg:text-[40px] font-extrabold">
+                <h3 className="uppercase text-[30px] lg:text-[40px] font-extrabold italic">
                   {item.title}
                 </h3>
-                <div className="text-[22px] font-extrabold uppercase mb-4 lg:mb-0">
+                <div className="text-[22px] font-extrabold uppercase mb-4 lg:mb-0 italic">
                   {item.description}
                 </div>
               </div>
@@ -39,7 +39,7 @@ export const Events = ({ blok }: any) => {
                 <ArrowRight />
               </div>
             </div>
-            <hr className="mt-2 text-black border-[1px]" />
+            <hr className="mt-10 text-black border-[1px]" />
           </div>
         ))}
       </div>
@@ -47,7 +47,7 @@ export const Events = ({ blok }: any) => {
       <div
         className={`  ${
           blok.event_field.length > loadMore
-            ? "flex justify-center mt-10"
+            ? "flex justify-center mt-10 lg:mt-16"
             : "hidden"
         }`}
       >

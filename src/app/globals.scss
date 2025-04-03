@@ -79,6 +79,11 @@ html {
   margin-left: auto;
 }
 
+.cta-button {
+  a {
+    font-weight: 800;
+  }
+}
 /* Global text settings */
 
 .p-container {
@@ -88,6 +93,7 @@ html {
 .render-content {
   p {
     font-size: 18px;
+    text-transform: uppercase;
   }
 }
 
@@ -126,6 +132,13 @@ h2 {
     font-size: 18px;
     font-weight: 400;
     color: white;
+  }
+}
+
+.text-center,
+.downcase-link {
+  a {
+    text-transform: none;
   }
 }
 
@@ -204,5 +217,24 @@ h2 {
 
   .form-info {
     width: 50%;
+  }
+
+  .info-form {
+    p {
+      span {
+        font-size: 22px;
+      }
+    }
+  }
+  .exceptions {
+    p {
+      font-size: 18px;
+    }
+  }
+
+  .render-content {
+    p {
+      font-size: 22px;
+    }
   }
 }

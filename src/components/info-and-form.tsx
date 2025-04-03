@@ -11,7 +11,7 @@ export const InfoForm = ({ blok, settings }: any) => {
         <h2 className="text-[35px] font-extrabold uppercase italic ">
           {blok?.title || ""}
         </h2>
-        <div className="mt-5">{render(blok?.content)}</div>
+        <div className="mt-5 info-form">{render(blok?.content)}</div>
       </div>
       <Bookingform
         settings={settings}

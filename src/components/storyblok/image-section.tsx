@@ -21,7 +21,11 @@ export const ImageSection = ({ blok }: any) => {
           }`}
         >
           {blok.sub_title && <h3>{blok.sub_title}</h3>}
-          {blok.title && <h2>{blok.title}</h2>}
+          {blok.title && (
+            <h2 className="uppercase text-[35px] italic font-extrabold">
+              {blok.title}
+            </h2>
+          )}
           {blok.content && <span>{render(blok.content)}</span>}
           <div>
             {blok.buttons.map((item: LinkTypes) => (

@@ -27,12 +27,13 @@ export const CTA = ({ blok }: any) => {
             }`,
           }}
         >
-          <div className="flex flex-col gap-5 text-center max-w-[90%] lg:max-w-[50%] items-center">
+          <div className="flex flex-col gap-5 text-center max-w-[90%] lg:max-w-[50%] items-center uppercase">
             <h2>{blok?.title}</h2>
-            <h4 className="lg:w-[50%]">{blok?.sub_title}</h4>
+            <h4 className="lg:w-[70%]">{blok?.sub_title}</h4>
             <div>
               {blok?.buttons.map((item: LinkTypes) => (
                 <Button
+                  className="cta-button"
                   key={item?._uid}
                   variant={`${item?.secondary_color ? "secondary" : "default"}`}
                 >

@@ -155,7 +155,7 @@ export function Bookingform({ settings, blok, label }: any) {
               <div className="grid gap-1.5 ">
                 <label
                   htmlFor="terms1"
-                  className="text-lg font-medium leading-[1.5rem] peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white"
+                  className="text-lg font-medium leading-[1.5rem] peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white font"
                 >
                   Vi värnar om din integritet och hanterar dina uppgifter med
                   största omsorg. Läs mer om hur vi behandlar personuppgifter i
@@ -169,7 +169,7 @@ export function Bookingform({ settings, blok, label }: any) {
                 </label>
               </div>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-start">
               <Button type="submit">Skicka</Button>
             </div>
           </form>
