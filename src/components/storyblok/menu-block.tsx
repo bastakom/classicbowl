@@ -6,7 +6,6 @@ import { ContactForm } from "../ui/form/contact-form";
 export const MenuBlock = ({ blok, settings, props }: any) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [selectedId, setSelectedId] = useState("");
-  console.log(blok);
 
   const handleDropdown = () => {
     setOpenDropdown(!openDropdown);
