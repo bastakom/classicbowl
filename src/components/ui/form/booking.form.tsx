@@ -72,7 +72,7 @@ export function Bookingform({ settings, blok, label }: any) {
   return (
     <div className="w-[100%] mt-5">
       <Toaster closeButton={true} />
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-end">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
