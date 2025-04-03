@@ -46,12 +46,14 @@ export const HeroSection = ({ blok }: HeroProps) => {
         }`}
       >
         <div
-          className="absolute top-0 left-0 h-full w-full opacity-30"
+          className="absolute top-0 left-0 h-full w-full opacity-30 z-10"
           style={{ background: `${blok.overlay.color}` }}
         />
 
         <div
-          className="z-20 lg:absolute flex flex-col gap-8 container mx-auto px-4"
+          className={` z-20 lg:absolute flex flex-col gap-8 container mx-auto  ${
+            blok.small_hero ? "px-4 lg:px-40" : "px-4"
+          }`}
           style={{
             alignItems: `${blok.text_center ? "center" : "start"}`,
             textAlign: `${blok.text_center ? "center" : "start"}`,
@@ -65,8 +67,10 @@ export const HeroSection = ({ blok }: HeroProps) => {
               {blok.sub_text}
             </h3>
             <h1
-              className={`text-[45px] lg:text-[80px] uppercase leading-normal font-extrabold text-center ${
-                blok.text_center && "lg:max-w-[80%] mx-auto "
+              className={`text-[45px] lg:text-[80px] uppercase leading-normal font-extrabold  ${
+                blok.text_center
+                  ? "lg:max-w-[80%] mx-auto text-center"
+                  : "lg:max-w-[80%] text-start"
               }`}
             >
               {blok.title}

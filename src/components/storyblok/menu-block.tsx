@@ -17,24 +17,41 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
 
   return (
     <div>
-      <div className="flex justify-center pt-10">
+      <div
+        className={`flex justify-center  ${
+          blok.bigger_field ? "pt-10" : "pt-10 lg:pt-20"
+        } `}
+      >
         {/*For desktop */}
         <div
-          className={`hidden lg:grid grid-cols-2  w-[70%] p-24 gap-12 rounded-xl ${
+          className={`hidden  rounded-xl ${
             blok.bg_color ? "bg-[#660708] text-white" : "bg-white text-black"
+          } ${
+            blok.bigger_field
+              ? "lg:flex lg:w-[80%] p-10"
+              : "lg:grid grid-cols-2  w-[70%] p-24 gap-12"
           }`}
         >
           {blok.field.map((item: any, index: number) => (
             <div
               className={` ${index === 2 ? "-mt-72" : ""} ${
                 !blok.bg_color ? "-mt-[170px]" : ""
-              }`}
+              } ${blok.bigger_field && "lg:w-[70%] mx-auto py-16"}`}
             >
-              <div>
+              <div
+                className={`${
+                  blok.bigger_field &&
+                  "lg:flex lg:flex-col lg:items-center mb-10"
+                }`}
+              >
                 <div className="text-[25px] uppercase font-bold italic">
                   {item.title}
                 </div>
-                <div className="menu-content mt-2 mb-4">
+                <div
+                  className={`menu-content mt-2 mb-4 ${
+                    blok.bigger_field && "menu text-center w-[30%]"
+                  }`}
+                >
                   {render(item.content)}
                 </div>
               </div>
@@ -44,8 +61,12 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
                 }`}
               >
                 {item.menu_item.map((el: any) => (
-                  <div className="flex justify-between mb-6">
-                    <div>
+                  <div className={`flex justify-between mb-6 `}>
+                    <div
+                      className={`${
+                        blok.bigger_field ? "w-[50%]" : "w-[80%] hej"
+                      }`}
+                    >
                       <div className="text-[22px] font-semibold">
                         {el.title}
                       </div>
@@ -53,7 +74,7 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
                         {el.description}
                       </div>
                     </div>
-                    <div className="text-[22px] font-semibold">{el.price}</div>
+                    <div className="text-[22px] font-normal">{el.price}</div>
                   </div>
                 ))}
               </div>

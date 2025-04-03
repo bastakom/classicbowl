@@ -113,10 +113,10 @@ export const Navigation = ({ props }: HeaderProps) => {
         <Image
           src={props.logo.filename}
           alt={props.site_title}
-          width={150}
+          width={137}
           height={50}
           className={`z-50 ${
-            hasBackground ? "absolute top-4" : "fixed top-16"
+            hasBackground ? "absolute top-4" : "fixed top-[3.2rem]"
           } ${open ? "hidden" : "block"}`}
         />
       </Link>

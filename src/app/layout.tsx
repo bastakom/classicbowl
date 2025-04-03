@@ -13,18 +13,11 @@ export const metadata: Metadata = {
     "Vi erbjuder allt från Bowling & Shuffleboard till Bar & Restaurang med fulla rättigheter. Välkomna!",
 };
 
-const cachedFetch = (input: any, init?: any): Promise<Response> => {
-  return fetch(input, {
-    ...init,
-    cache: "no-cache",
-  });
-};
-
 storyblokInit({
   accessToken: process.env.STORYBLOK_TOKEN,
   use: [apiPlugin],
   apiOptions: {
-    fetch: cachedFetch,
+    region: "eu",
   },
 });
 
