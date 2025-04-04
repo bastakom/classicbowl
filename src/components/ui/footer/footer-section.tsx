@@ -127,7 +127,7 @@ export const FooterSection = ({ props }: any) => {
         </div>
         <div className="lg:flex gap-5 lg:items-end mt-24 lg:mt-0 mx-auto lg:mx-0">
           <Link
-            href="/cookies"
+            href="/integritetspolicy"
             style={{ fontStyle: "normal", textTransform: "none" }}
           >
             Integritespolicy
