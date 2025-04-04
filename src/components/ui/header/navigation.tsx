@@ -52,10 +52,15 @@ export const Navigation = ({ props }: HeaderProps) => {
   const [submenuClick, setSubmenuClick] = useState(false);
   const [submenuType, setSubmenuType] = useState<string | null>(null);
 
+<<<<<<< Updated upstream
   function handleWheelEvent(event: any) {
     const header = document.getElementById('header');
     const scrollPosition = window.scrollY;
     const threshold = 80; // The 80px threshold you wanted
+=======
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+>>>>>>> Stashed changes
 
     if (header) {
       if (event.deltaY > 10 && scrollPosition > threshold) {
@@ -91,12 +96,20 @@ export const Navigation = ({ props }: HeaderProps) => {
 
   return (
     <nav
+<<<<<<< Updated upstream
       className={`fixed top-20 w-full items-center flex justify-between px-5 lg:pl-14 z-30 transition-all duration-300 ${isMenuVisible ? "top-0 opacity-100" : "-top-20 opacity-0"
         } ${hasBackground
           ? "bg-white lg:mt-0 py-4 lg:py-5 "
           : "bg-transparent top-0"
         }`}
       id="header"
+=======
+      className={`fixed w-full items-center flex justify-between px-5 lg:pl-14 z-30 transition-all duration-300 ${isMenuVisible ? "top-0 opacity-100" : "-top-20 opacity-0"
+        } ${hasBackground
+          ? "bg-white lg:mt-0 py-4 lg:py-5 "
+          : "bg-transparent mt-16 lg:mt-20"
+        }`}
+>>>>>>> Stashed changes
     >
       <Link href="/">
         <Image
@@ -277,8 +290,13 @@ export const Navigation = ({ props }: HeaderProps) => {
           </div>
           <div
             className={`${submenuClick
+<<<<<<< Updated upstream
               ? "hidden"
               : "block border-t-[0.5px] border-white mt-20 w-[100%]"
+=======
+                ? "hidden"
+                : "block border-t-[0.5px] border-white mt-20 w-[100%]"
+>>>>>>> Stashed changes
               }`}
           >
             <div className="flex flex-col gap-4 text-[18px] text-white mt-6 font-bold">
