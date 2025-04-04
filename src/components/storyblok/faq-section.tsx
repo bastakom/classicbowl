@@ -6,15 +6,15 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-
+} from "@/components/ui/accordion";
 
 export const FAQSection = ({ blok }: any) => {
-
   return (
     <>
       <div className="rounded-[20px] my-14 mx-auto p-14 container-section bg-[#F5F3F4]">
-        <h2 className="mb-12">{blok.title}</h2>
+        <h2 className="mb-12 uppercase text-[25px] italic font-bold">
+          {blok.title}
+        </h2>
         <div>
           {blok.fields.map((faq: any) => (
             <Accordion type="single" collapsible>
@@ -31,5 +31,5 @@ export const FAQSection = ({ blok }: any) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};

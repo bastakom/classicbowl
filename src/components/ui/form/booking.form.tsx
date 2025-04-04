@@ -18,11 +18,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { formSchema } from "./schemas/form-schema";
 import { Textarea } from "../textarea";
-import { render } from "storyblok-rich-text-react-renderer";
 import Link from "next/link";
 import { useState } from "react";
 
-export function ContactForm({ settings }: any) {
+export function Bookingform({ settings, blok, label }: any) {
   const [checkbox, setCheckbox] = useState(false);
 
   const handleCheckbox = () => {
@@ -33,16 +32,16 @@ export function ContactForm({ settings }: any) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      foretag: "",
       mail: "",
       phone: "",
       message: "",
+      title: blok?.title || "Okänd titel",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const response = await fetch("/api/form", {
+      const response = await fetch("/api/booking", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,21 +70,15 @@ export function ContactForm({ settings }: any) {
   }
 
   return (
-    <div className="w-[100%] bg-[#660708] p-5 lg:p-14 pt-14 lg:pt-24 mt-10">
-      <div className="flex flex-col items-center text-white lg:mb-10">
-        <h3 className="italic text-[25px] uppercase font-bold">
-          {settings.content.form_title}
-        </h3>
-        <div className="form-info">{render(settings.content.form_info)}</div>
-      </div>
+    <div className="w-[100%] mt-5">
       <Toaster closeButton={true} />
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-end">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4 my-14 lg:w-[50%] flex flex-col gap-5"
+            className="space-y-4 my-14 lg:w-[80%] flex flex-col gap-4"
           >
-            <div className="grid lg:grid-cols-2 gap-7">
+            <div>
               <FormField
                 control={form.control}
                 name="name"
@@ -96,21 +89,6 @@ export function ContactForm({ settings }: any) {
                     </FormLabel>
                     <FormControl>
                       <Input placeholder="Joe Doe" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="foretag"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      {settings.content.form_company_placeholder}
-                    </FormLabel>
-                    <FormControl>
-                      <Input placeholder="Företagsnamn" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -158,11 +136,10 @@ export function ContactForm({ settings }: any) {
               name="message"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
-                    {settings.content.from_textarea_placeholder}
-                  </FormLabel>
+                  <FormLabel>{label || ""}</FormLabel>
+
                   <FormControl>
-                    <Textarea placeholder="Skriv ditt meddelande" {...field} />
+                    <Textarea {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -175,26 +152,24 @@ export function ContactForm({ settings }: any) {
                 onClick={() => handleCheckbox()}
                 checked={checkbox}
               />
-              <div className="grid gap-1.5 leading-none">
+              <div className="grid gap-1.5 ">
                 <label
                   htmlFor="terms1"
-                  className="text-lg font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white"
+                  className="text-lg font-medium leading-[1.5rem] peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white font"
                 >
                   Vi värnar om din integritet och hanterar dina uppgifter med
-                  största omsorg.
-                </label>
-                <p className="text-lg text-white">
-                  Läs mer om hur vi behandlar personuppgifter i vår{" "}
+                  största omsorg. Läs mer om hur vi behandlar personuppgifter i
+                  vår{" "}
                   <Link
                     href={"/"}
                     className="normal-case text-lg font-extrabold not-italic"
                   >
                     integritetspolicy.
                   </Link>
-                </p>
+                </label>
               </div>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-start">
               <Button type="submit">Skicka</Button>
             </div>
           </form>

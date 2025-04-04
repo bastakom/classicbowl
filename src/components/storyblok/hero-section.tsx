@@ -40,18 +40,20 @@ export const HeroSection = ({ blok }: HeroProps) => {
             ? "h-full"
             : blok.small_hero
             ? "h-[50vh] lg:min-h-[50vh]"
-            : "h-full lg:min-h-[90vh]"
+            : "min-h-[90vh]"
         } justify-center flex items-center ${
           blok.frame && "mx-auto px-4 container-section mt-20"
         }`}
       >
         <div
-          className="absolute top-0 left-0 h-full w-full opacity-30"
+          className="absolute top-0 left-0 h-full w-full opacity-30 z-10"
           style={{ background: `${blok.overlay.color}` }}
         />
 
         <div
-          className="z-20 absolute flex flex-col gap-8 container mx-auto px-4"
+          className={` z-20 lg:absolute flex flex-col gap-8 container mx-auto  ${
+            blok.small_hero ? "px-4 lg:px-40" : "px-4"
+          }`}
           style={{
             alignItems: `${blok.text_center ? "center" : "start"}`,
             textAlign: `${blok.text_center ? "center" : "start"}`,
@@ -65,8 +67,10 @@ export const HeroSection = ({ blok }: HeroProps) => {
               {blok.sub_text}
             </h3>
             <h1
-              className={`text-[45px] lg:text-[80px] uppercase leading-normal font-extrabold text-center ${
-                blok.text_center && "lg:max-w-[80%] mx-auto"
+              className={`text-[45px] lg:text-[80px] uppercase leading-normal font-extrabold  ${
+                blok.text_center
+                  ? "lg:max-w-[80%] mx-auto text-center"
+                  : "lg:max-w-[80%] text-start"
               }`}
             >
               {blok.title}
@@ -76,14 +80,14 @@ export const HeroSection = ({ blok }: HeroProps) => {
             )}
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-2 flex-wrap justify-center lg:justify-start">
+          <div className="flex flex-col lg:flex-row gap-2 flex-wrap justify-center ">
             {blok.buttons.map((item: LinkTypes) => (
               <Button
                 key={item._uid}
                 variant={`${item.secondary_color ? "secondary" : "default"}`}
                 className="text-sm lg:text-base"
               >
-                <Link href="/">{item.title}</Link>
+                <Link href={item.link.cached_url}>{item.title}</Link>
               </Button>
             ))}
           </div>

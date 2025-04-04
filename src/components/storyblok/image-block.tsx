@@ -36,16 +36,24 @@ export const ImageBlock = ({ blok }: ImageBlockProps) => {
             style={{ backgroundColor: item.background_color.color }}
             className="w-full h-full"
           >
-            <div className="px-5 pt-40 lg:p-20 flex flex-col lg:justify-end h-[100%] gap-5 text-white">
-              <h3 className="text-[40px] lg:text-[60px] uppercase font-extrabold italic">
-                {item.title}
-              </h3>
-              <div className="image-block-content">{render(item.content)}</div>
-              <div className="flex gap-2 items-center pb-10 lg:pb-0 justify-end lg:justify-start">
-                <Link href={item.link.cached_url} className="text-[16px] ">
+            <div className="px-5 pt-40 lg:p-20 flex flex-col lg:justify-end h-[100%] gap-5 text-white ">
+              <Link
+                href={item.link.cached_url}
+                style={{ textTransform: "none" }}
+                className="flex flex-col gap-4 lg:px-8"
+              >
+                <h3 className="text-[40px] lg:text-[60px] uppercase font-extrabold italic">
+                  {item.title}
+                </h3>
+                <div className="image-block-content">
+                  {render(item.content)}
+                </div>
+              </Link>
+              <div className="flex gap-2 items-center pb-10 lg:pb-0 justify-end lg:justify-start group cursor-pointer lg:pt-6 lg:px-8">
+                <Link href={item.link.cached_url} className="text-[16px]">
                   {item.link_title}
                 </Link>
-                <ArrowRight />
+                <ArrowRight className="transition-transform duration-300 ease-in-out group-hover:translate-x-2" />
               </div>
             </div>
           </div>

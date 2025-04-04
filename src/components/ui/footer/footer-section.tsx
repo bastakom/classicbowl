@@ -31,14 +31,35 @@ export const FooterSection = ({ props }: any) => {
             height={80}
           />
         </div>
-        <div className="flex flex-col gap-5 font-semibold">
-          <h3>{props.contact_title}</h3>
+        <div className="flex flex-col gap-5 font-extrabold">
+          <h3 className="text-[20px] lg:text-[22px] italic uppercase">
+            {props.contact_title}
+          </h3>
           <span className="render-content">{render(props.adress)}</span>
-          <div className="flex flex-col">
-            <Link href={`mailto:${props.mail}`}>{props.mail}</Link>
-            <Link href={`tel:${props.phone}`}>{props.phone}</Link>
+          <div className="flex items-center gap-2 justify-center lg:justify-start">
+            <Link
+              href={`${props?.link?.cached_url}`}
+              className="text-[20px] lg:text-[22px] italic !uppercase"
+            >
+              {props?.link_title}
+            </Link>
+            <HiOutlineArrowSmallRight fontSize={25} />
           </div>
-          <div className="hidden lg:flex flex-col gap-4 mt-4">
+          <div className="flex flex-col">
+            <Link
+              href={`mailto:${props.mail}`}
+              className="text-[20px] lg:text-[22px] italic !uppercase"
+            >
+              {props.mail}
+            </Link>
+            <Link
+              href={`tel:${props.phone}`}
+              className="text-[20px] lg:text-[22px] italic !uppercase"
+            >
+              {props.phone}
+            </Link>
+          </div>
+          <div className="hidden lg:flex flex-col gap-4 mt-4 text-[20px] lg:text-[22px] italic uppercase">
             <h3>Följ oss</h3>
             <Socials props={props.fields} color={props.header_text_color} />
           </div>
@@ -51,7 +72,9 @@ export const FooterSection = ({ props }: any) => {
             <h3>ÖPPETTIDER</h3>
             <IoMdArrowDropdown fontSize={25} />
           </div>
-          <h3 className="hidden lg:flex">ÖPPETTIDER</h3>
+          <h3 className="hidden lg:flex  lg:text-[22px] italic uppercase font-extrabold">
+            ÖPPETTIDER
+          </h3>
           <div
             className={`lg:flex flex-col text-[22px] ${
               openDropdown ? "block" : "hidden"
@@ -59,8 +82,10 @@ export const FooterSection = ({ props }: any) => {
           >
             {props.opening_hours.map((item: any, i: number) => (
               <div className="flex justify-between" key={i}>
-                <span className="text-[16px] lg:text-[22px]">{item.day}</span>
-                <p className="text-[16px] lg:text-[22px]">{item.time}</p>
+                <span className="text-[16px] lg:text-[22px] italic">
+                  {item.day}
+                </span>
+                <p className="text-[16px] lg:text-[22px] italic">{item.time}</p>
               </div>
             ))}
           </div>
@@ -68,10 +93,12 @@ export const FooterSection = ({ props }: any) => {
             {props.footer_menu.map((item: LinkTypes, i: number) => (
               <Link
                 key={i}
-                className="text-[22px] font-bold italic flex gap-2 items-center"
+                className="text-[22px] font-bold italic flex gap-4 items-center"
                 href={item.link.cached_url}
               >
-                <span>{item.title}</span>
+                <span className="text-[22px] font-bold italic uppercase">
+                  {item.title}
+                </span>
                 <HiOutlineArrowSmallRight />
               </Link>
             ))}
@@ -80,7 +107,7 @@ export const FooterSection = ({ props }: any) => {
             <h3>Följ oss</h3>
             <Socials props={props.fields} color={props.header_text_color} />
           </div>
-          <span className="hidden lg:flex mt-20 text-[18px]">
+          <span className="hidden lg:flex mt-20 text-[18px] exceptions">
             {render(props.exceptions)}
           </span>
         </div>
