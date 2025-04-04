@@ -6,7 +6,7 @@ import { HiOutlineArrowSmallRight } from "react-icons/hi2";
 
 export const Columns = ({ blok }: any) => {
   return (
-    <div className="container-section p-container lg:my-16 lg:mb-32">
+    <div className="container-section p-container  lg:my-16 lg:mb-32">
       <div
         className={`grid gap-10 py-6 ${
           blok.columns === "4"

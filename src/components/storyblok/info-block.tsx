@@ -14,7 +14,7 @@ export const InfoBlock = ({ blok }: any) => {
           className={`${
             blok.link_title == ""
               ? "hidden"
-              : "flex items-center gap-2 justify-center text-[#1E40AF] lg:mt-10"
+              : "flex items-center gap-2 justify-center text-[#1E40AF] lg:mt-10 pt-10 lg:pt-0"
           }`}
         >
           <Link href={blok.link.cached_url} className="font-extrabold">
