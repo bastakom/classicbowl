@@ -3,16 +3,14 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { useState } from "react";
-import { Card } from "../ui/blogg/card";
 
 export const Events = ({ props, blok, evenemang }: any) => {
-  const [loadMore, setLoadMore] = useState(5);
+  const [loadMore, setLoadMore] = useState(blok.show_less_events ? 2 : 5);
 
   const handleEvents = (number: number) => {
     setLoadMore(number);
   };
 
-  console.log(props);
   return (
     <div className="w-[90%] lg:w-[50%] mx-auto my-16 ">
       <h2 className="uppercase text-[25px] text-center">{blok?.title}</h2>

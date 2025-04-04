@@ -26,7 +26,6 @@ const Page = async ({ params }: { params: Params }) => {
   const story = await getData(slugName);
   const settings = await getThemeSettings();
   const evenemang = await getEvenemang();
-  console.log("evenemang", evenemang);
 
   return (
     <StoryblokStory story={story} settings={settings} evenemang={evenemang} />
