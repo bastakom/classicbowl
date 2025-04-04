@@ -1,6 +1,6 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc";
 
-const page = ({ blok, settings }: any) => (
+const page = ({ blok, settings, evenemang }: any) => (
   <div {...storyblokEditable(blok)}>
     {blok &&
       Array.isArray(blok.body) &&
@@ -10,6 +10,7 @@ const page = ({ blok, settings }: any) => (
           key={nestedBlok._uid}
           settings={settings}
           props={blok}
+          evenemang={evenemang}
         />
       ))}
   </div>

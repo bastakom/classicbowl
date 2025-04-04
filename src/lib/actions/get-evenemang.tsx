@@ -1,9 +1,9 @@
 import { getStoryblokApi } from "@storyblok/react";
 
-export async function getBlogg() {
+export async function getEvenemang() {
   let sbParams = {
     version: "draft" as const,
-    starts_with: "blogg",
+    starts_with: "evenemang",
   };
 
   const client = getStoryblokApi();

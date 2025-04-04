@@ -139,8 +139,7 @@ h2 {
 
 .text-center,
 .downcase-link {
-  a,
-  p {
+  > a {
     text-transform: none;
     font-size: 18px;
   }
