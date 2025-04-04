@@ -13,18 +13,10 @@ interface CardProps {
 
 export const Card = ({ title, link, image, uuid, content }: CardProps) => {
   return (
-    <Link
-      href={link}
-      key={uuid}
-      className="min-h-[520px] border flex flex-col gap-2 rounded-md relative transition-all duration-300 hover:shadow-md"
-    >
-      <div className="w-full h-[300px] relative">
-        <Image
-          src={image || ""}
-          fill
-          alt={title}
-          className="object-cover "
-        />
+    <div className="min-h-[520px]  flex flex-col gap-2 mt-40 px-36">
+      <h2 className="font-extrabold text-[60px] uppercase">{title}</h2>
+      {/*  <div className="w-full h-[300px] relative">
+        <Image src={image || ""} fill alt={title} className="object-cover " />
       </div>
       <div className="p-5 flex flex-col gap-3">
         <h4 className="font-bold">{title}</h4>
@@ -33,8 +25,9 @@ export const Card = ({ title, link, image, uuid, content }: CardProps) => {
             {render(content)}
           </span>
         )}
-      </div>
+      </div> 
       <ArrowRight className="absolute right-5 bottom-5" />
-    </Link>
+      */}
+    </div>
   );
 };

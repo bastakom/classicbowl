@@ -85,7 +85,9 @@ export const FooterSection = ({ props }: any) => {
                 <span className="text-[16px] lg:text-[22px] italic">
                   {item.day}
                 </span>
-                <p className="text-[16px] lg:text-[22px] italic">{item.time}</p>
+                <p className="text-[16px] lg:text-[22px]  italic">
+                  {item.time}
+                </p>
               </div>
             ))}
           </div>
