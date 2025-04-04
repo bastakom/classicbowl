@@ -4,7 +4,7 @@ import { apiPlugin, storyblokInit } from "@storyblok/react";
 import { Header } from "@/components/ui/header/header";
 import "./globals.scss";
 import "./theme.scss";
-import "./fonts.scss";
+import "./fonts.css";
 import { Footer } from "@/components/ui/footer/footer";
 
 export const metadata: Metadata = {

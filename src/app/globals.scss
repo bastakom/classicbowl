@@ -73,6 +73,24 @@ html {
   scroll-behavior: smooth;
 }
 
+$font-primary: "Figtree", sans-serif;
+
+h3,
+h4,
+h5,
+span,
+button,
+p,
+.font {
+  font-family: $font-primary;
+}
+
+h1,
+h2,
+a {
+  font-family: $font-primary;
+}
+
 .container-section {
   width: 95%;
   margin-right: auto;
