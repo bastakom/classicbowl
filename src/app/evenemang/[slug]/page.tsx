@@ -7,7 +7,8 @@ const page = async ({ params }: { params: Params }) => {
   const data = await getEvenemangSlug((await params).slug);
 
   return (
-    <div className="py-24 container-section">
+    <div className="">
+      <div className="bg-[#660708] w-[100%] h-[150px] lg:h-[200px]"></div>
       <Card
         title={data.name}
         link={data.content.link.cached_url}
