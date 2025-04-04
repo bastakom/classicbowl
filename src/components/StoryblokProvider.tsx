@@ -22,6 +22,7 @@ import { InfoBlock } from "./storyblok/info-block";
 import { LunchBlock } from "./storyblok/lunch-block";
 import { InfoForm } from "./info-and-form";
 import { Events } from "./storyblok/events";
+import { PolicyBlock } from "./storyblok/policy-block";
 
 storyblokInit({
   components: {
@@ -46,6 +47,7 @@ storyblokInit({
     lunch_block: LunchBlock,
     info_and_form: InfoForm,
     events: Events,
+    integritet_block: PolicyBlock,
   },
 
   enableFallbackComponent: true,
