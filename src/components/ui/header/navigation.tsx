@@ -79,7 +79,7 @@ export const Navigation = ({ props }: HeaderProps) => {
   }, []);
 
   useEffect(() => {
-    if (submenuClick) {
+    if (open) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -88,7 +88,7 @@ export const Navigation = ({ props }: HeaderProps) => {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [submenuClick]);
+  }, [open]);
 
   const handleOpenMenu = () => {
     setMenuOpen(!open);
