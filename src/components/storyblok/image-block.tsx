@@ -50,7 +50,10 @@ export const ImageBlock = ({ blok }: ImageBlockProps) => {
                 </div>
               </Link>
               <div className="flex gap-2 items-center pb-10 lg:pb-0 justify-end lg:justify-start group cursor-pointer lg:pt-6 lg:px-8">
-                <Link href={item.link.cached_url} className="text-[16px]">
+                <Link
+                  href={item.link.cached_url}
+                  className="text-[16px] font-extrabold"
+                >
                   {item.link_title}
                 </Link>
                 <ArrowRight className="transition-transform duration-300 ease-in-out group-hover:translate-x-2" />
