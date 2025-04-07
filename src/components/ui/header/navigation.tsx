@@ -196,7 +196,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                       >
                         {item.title}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className="flex flex-row gap-4 bg-white shadow-lg rounded-md p-4 h-[50vh]">
+                      <NavigationMenuContent className="flex flex-row gap-4 bg-white shadow-lg rounded-md p-4 h-[50vh] ">
                         <div>
                           {item.submenu.map((image: any) => (
                             <div key={image._uid}>
@@ -218,15 +218,15 @@ export const Navigation = ({ props }: HeaderProps) => {
                             </div>
                           ))}
                         </div>
-                        <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
+                        <ul className="grid gap-3 p-4  md:w-[400px] lg:w-[500px] lg:grid-cols-2 h-5">
                           {item.submenu?.map((el: any) => (
                             <Link
                               href={el.link.cached_url}
-                              className="flex items-center gap-2 px-4 hover:bg-gray-100 "
+                              className="flex items-center gap-2 px-4 hover:bg-gray-100 h-10 "
                               key={el.title}
                               onMouseEnter={() => handleSecondImage(el._uid)}
                             >
-                              <NavigationMenuLink className="font-bold">
+                              <NavigationMenuLink className="font-bold ">
                                 {el.title}
                               </NavigationMenuLink>
                             </Link>
