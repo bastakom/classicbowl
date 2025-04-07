@@ -93,7 +93,7 @@ html {
 
 .render-content {
   p {
-    font-size: 18px;
+    font-size: 20px;
     text-transform: uppercase;
   }
 }
@@ -144,6 +144,16 @@ h2 {
     font-size: 18px;
   }
 }
+
+.downcase-link {
+  p {
+    a {
+      text-transform: none;
+      font-size: 18px;
+    }
+  }
+}
+
 .cta-button {
   a {
     text-transform: uppercase;
