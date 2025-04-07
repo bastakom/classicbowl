@@ -133,7 +133,7 @@ h2 {
     font-size: 18px;
     font-weight: 400;
     color: white;
-    font-style: italic !important;
+    font-style: italic;
   }
 }
 
@@ -204,6 +204,7 @@ h2 {
   .image-block-content {
     p {
       font-size: 22px;
+      font-style: italic;
     }
   }
 
