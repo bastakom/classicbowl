@@ -51,7 +51,15 @@ export const Navigation = ({ props }: HeaderProps) => {
   const [hasBackground, setHasBackground] = useState(false);
   const [submenuClick, setSubmenuClick] = useState(false);
   const [submenuType, setSubmenuType] = useState<string | null>(null);
+  const [isImageVisible, setIsImageVisible] = useState(
+    "247d1986-b5ca-4057-a912-b21058bbf599"
+  );
+  const [isSecondImageVisible, setIsSecondImageVisible] = useState(
+    "247d1986-b5ca-4057-a912-b21058bbf599"
+  );
 
+  console.log(isImageVisible);
+  console.log(props);
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let isMobile = window.innerWidth <= 408;
@@ -99,6 +107,13 @@ export const Navigation = ({ props }: HeaderProps) => {
     setSubmenuType(item._uid);
   };
 
+  const handleImage = (id: any) => {
+    setIsImageVisible(id);
+  };
+
+  const handleSecondImage = (id: any) => {
+    setIsSecondImageVisible(id);
+  };
   return (
     <nav
       className={`fixed w-full items-center flex justify-between px-5 lg:pl-14 z-30 transition-all duration-300 ${
@@ -134,17 +149,38 @@ export const Navigation = ({ props }: HeaderProps) => {
                       >
                         {item.title}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className=" gap-4 bg-white shadow-lg rounded-md p-4">
+                      <NavigationMenuContent className="flex flex-row gap-4 bg-white shadow-lg rounded-md p-4 h-[50vh]">
+                        <div>
+                          {item.submenu.map((image: any) => (
+                            <div key={image._uid}>
+                              {isImageVisible == image._uid && (
+                                <div className="max-w-[250px] h-[250px] pl-4 pt-4">
+                                  <div className="relative w-[200px] h-[200px] shrink-0">
+                                    <Image
+                                      src={image?.image?.filename || "/"}
+                                      alt={image?.image?.alt || "No alt text"}
+                                      fill
+                                      className="object-cover rounded-md"
+                                    />
+                                  </div>
+                                  <div className="mt-2 text-[18px] italic ">
+                                    {image.description}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
                         <NavigationMenuLink>
                           <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
                             {item.submenu?.map((el: any) => (
                               <Link
                                 href={el.link.cached_url}
-                                className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                                className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 "
                                 key={el.title}
+                                onMouseEnter={() => handleImage(el._uid)}
                               >
-                                <SubMenuIcons props={el} />
-                                <NavigationMenuLink>
+                                <NavigationMenuLink className="font-bold">
                                   {el.title}
                                 </NavigationMenuLink>
                               </Link>
@@ -160,16 +196,37 @@ export const Navigation = ({ props }: HeaderProps) => {
                       >
                         {item.title}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className=" gap-4 bg-white shadow-lg rounded-md p-4">
+                      <NavigationMenuContent className="flex flex-row gap-4 bg-white shadow-lg rounded-md p-4 h-[50vh]">
+                        <div>
+                          {item.submenu.map((image: any) => (
+                            <div key={image._uid}>
+                              {isSecondImageVisible == image._uid && (
+                                <div className="min-w-[250px] h-[300px] pl-4 pt-4">
+                                  <div className="relative w-[200px] h-[200px] shrink-0">
+                                    <Image
+                                      src={image?.image?.filename || "/"}
+                                      alt={image?.image?.alt || "No alt text"}
+                                      fill
+                                      className="object-cover rounded-md"
+                                    />
+                                  </div>
+                                  <div className="mt-2 text-[18px] italic max-w-[200px] ">
+                                    {image.description}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
                         <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
                           {item.submenu?.map((el: any) => (
                             <Link
                               href={el.link.cached_url}
-                              className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                              className="flex items-center gap-2 px-4 hover:bg-gray-100 "
                               key={el.title}
+                              onMouseEnter={() => handleSecondImage(el._uid)}
                             >
-                              <SubMenuIcons props={el} />
-                              <NavigationMenuLink>
+                              <NavigationMenuLink className="font-bold">
                                 {el.title}
                               </NavigationMenuLink>
                             </Link>
