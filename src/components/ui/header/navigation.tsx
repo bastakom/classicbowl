@@ -58,8 +58,6 @@ export const Navigation = ({ props }: HeaderProps) => {
     "247d1986-b5ca-4057-a912-b21058bbf599"
   );
 
-  console.log(isImageVisible);
-  console.log(props);
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let isMobile = window.innerWidth <= 408;
