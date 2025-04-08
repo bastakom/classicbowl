@@ -48,6 +48,7 @@ export const Card = ({ event, settings }: CardProps) => {
         blok={event.content}
         title={event.content.form_title}
         settings={settings}
+        formTitle={event.full_slug}
       />
     </div>
   );
