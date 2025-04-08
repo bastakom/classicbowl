@@ -147,7 +147,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                       >
                         {item.title}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className="flex flex-row gap-4 bg-white shadow-lg rounded-md p-4 h-[50vh]">
+                      <NavigationMenuContent className="flex flex-row gap-4 bg-white shadow-lg rounded-md p-4 h-[47vh]">
                         <div>
                           {item.submenu.map((image: any) => (
                             <div key={image._uid}>
@@ -161,7 +161,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                                       className="object-cover rounded-md"
                                     />
                                   </div>
-                                  <div className="mt-2 text-[18px] italic ">
+                                  <div className="mt-2 text-[16px] italic leading-[25px]">
                                     {image.description}
                                   </div>
                                 </div>
@@ -194,7 +194,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                       >
                         {item.title}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className="flex flex-row gap-4 bg-white shadow-lg rounded-md p-4 h-[50vh] ">
+                      <NavigationMenuContent className="flex flex-row gap-4 bg-white shadow-lg rounded-md p-4 h-[47vh] ">
                         <div>
                           {item.submenu.map((image: any) => (
                             <div key={image._uid}>
@@ -208,7 +208,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                                       className="object-cover rounded-md"
                                     />
                                   </div>
-                                  <div className="mt-2 text-[18px] italic max-w-[200px] ">
+                                  <div className="mt-2 text-[16px] italic max-w-[200px] leading-[25px]">
                                     {image.description}
                                   </div>
                                 </div>
@@ -286,7 +286,7 @@ export const Navigation = ({ props }: HeaderProps) => {
               data-id="close-sidebar-menu"
             />
           </div>
-          <div className="flex flex-col mt-28 gap-4">
+          <div className="flex flex-col mt-28 gap-4 ">
             {props.meny.map((item: LinkTypes) => {
               if (item.submenu_restaurant || item.submenu_activities) {
                 return (
@@ -304,7 +304,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                     </Link>
 
                     {submenuClick && submenuType === item._uid ? (
-                      <div className="gap-2 fixed bg-[#660708] top-44 px-5 py-14 left-0 flex-col flex text-[32px] z-30 h-auto transition-all duration-300 right-0 ">
+                      <div className="gap-2 fixed bg-[#660708] top-44 px-5 py-14 left-0 flex-col flex text-[32px] z-30 h-auto max-h-[calc(100vh-11rem)] overflow-y-auto transition-all duration-300 right-0 pb-28">
                         <div
                           className="flex gap-2 items-center text-[18px] text-white mt-0"
                           onClick={() => {
@@ -337,7 +337,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                 <Link
                   key={item._uid}
                   onClick={handleOpenMenu}
-                  href={item.link.url}
+                  href={item.link.cached_url}
                   className="text-white text-[30px] font-bold"
                 >
                   {item.title}

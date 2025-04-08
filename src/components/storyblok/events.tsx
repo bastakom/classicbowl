@@ -33,7 +33,7 @@ export const Events = ({ props, blok, evenemang }: any) => {
                       {item?.content?.Datum?.split(" ")[0]}
                     </span>
                     <span className="text-[#B71B2F] font-extrabold">
-                      {` - ${item?.content?.Time}`}
+                      {`  ${item?.content?.Time}`}
                     </span>
                   </div>
                   <h3 className="uppercase text-[30px] lg:text-[40px] font-extrabold italic">
