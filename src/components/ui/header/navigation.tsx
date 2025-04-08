@@ -55,7 +55,7 @@ export const Navigation = ({ props }: HeaderProps) => {
     "247d1986-b5ca-4057-a912-b21058bbf599"
   );
   const [isSecondImageVisible, setIsSecondImageVisible] = useState(
-    "247d1986-b5ca-4057-a912-b21058bbf599"
+    "d3dcbeea-7de2-465d-994f-514ca6f56843"
   );
 
   useEffect(() => {
