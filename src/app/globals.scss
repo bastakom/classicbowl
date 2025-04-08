@@ -238,6 +238,7 @@ h2 {
   p {
     text-align: center;
     margin-top: 1rem;
+    font-size: 18px;
     span {
       font-size: 22px;
       font-weight: 400;
@@ -289,11 +290,14 @@ h2 {
 
   .form-info {
     width: 50%;
+    p {
+      font-size: 22px;
+    }
   }
 
   .info-form {
     p {
-      font-size: 22px;
+      font-size: 22px !important;
       span {
         font-size: 22px;
       }
