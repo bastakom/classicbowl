@@ -95,7 +95,7 @@ export function ContactForm({ settings }: any) {
                       {settings.content.form_name_placeholder}
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="Joe Doe" {...field} />
+                      <Input {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -110,7 +110,7 @@ export function ContactForm({ settings }: any) {
                       {settings.content.form_company_placeholder}
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="Företagsnamn" {...field} />
+                      <Input {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -127,7 +127,7 @@ export function ContactForm({ settings }: any) {
                       {settings.content.form_mail_placeholder}
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="example@example.se" {...field} />
+                      <Input {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -142,11 +142,7 @@ export function ContactForm({ settings }: any) {
                       {settings.content.form_phone_placeholder}
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        type="number"
-                        placeholder="123-456-7890"
-                        {...field}
-                      />
+                      <Input type="number" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -162,7 +158,7 @@ export function ContactForm({ settings }: any) {
                     {settings.content.from_textarea_placeholder}
                   </FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Skriv ditt meddelande" {...field} />
+                    <Textarea {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

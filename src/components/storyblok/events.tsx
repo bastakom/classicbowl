@@ -18,6 +18,11 @@ export const Events = ({ props, blok, evenemang }: any) => {
 
       <div>
         {evenemang
+          .filter((item: any) => {
+            const eventDate = new Date(item.content.Datum);
+            const now = new Date();
+            return eventDate >= now;
+          })
           .sort((a: any, b: any) => {
             const dateA = new Date(a.content.Datum).getTime();
             const dateB = new Date(b.content.Datum).getTime();
