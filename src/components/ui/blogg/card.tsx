@@ -18,7 +18,7 @@ export const Card = ({ event, settings }: CardProps) => {
             <span className="text-[#B71B2F] text-[22px] font-extrabold mb-2">
               {event?.content?.Datum?.split(" ")[0]}
             </span>
-            <span className="text-[#B71B2F] text-[22px] font-extrabold">{` - ${event?.content?.Time}`}</span>
+            <span className="text-[#B71B2F] text-[22px] font-extrabold">{`  ${event?.content?.Time}`}</span>
           </div>
           <h2 className="font-extrabold text-[30px] lg:text-[40px] uppercase mb-3 lg:mb-6">
             {event.name}
