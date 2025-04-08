@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { useState } from "react";
+import { BsArrowUpCircleFill } from "react-icons/bs";
 
 export const Events = ({ props, blok, evenemang }: any) => {
   const [loadMore, setLoadMore] = useState(blok.show_less_events ? 2 : 5);
@@ -65,21 +66,43 @@ export const Events = ({ props, blok, evenemang }: any) => {
           ))}
       </div>
 
-      <div
-        className={`${
-          evenemang.length >= loadMore
-            ? "flex justify-center mt-10 lg:mt-16"
-            : "hidden"
-        }`}
-      >
-        <button
-          className="flex items-center gap-2 text-[#1E40AF] text-[16px] uppercase font-extrabold"
-          onClick={() => handleEvents(loadMore + 5)}
+      {blok.show_less_events ? (
+        <div
+          className={`${
+            evenemang.length >= loadMore
+              ? "flex justify-center mt-10 lg:mt-16"
+              : "hidden"
+          }`}
         >
-          Ladda fler
-          <BsPlusCircleFill fontSize={20} />
-        </button>
-      </div>
+          <Link
+            href={"/kommande-evenemang"}
+            className="flex items-center gap-2 text-[#1E40AF] text-[16px] uppercase font-extrabold"
+          >
+            Se fler evenemang
+            <ArrowRight />
+          </Link>
+        </div>
+      ) : (
+        <div className="flex justify-center items-center mt-10 lg:mt-16">
+          {evenemang.length >= loadMore ? (
+            <button
+              className="flex items-center gap-2 text-[#1E40AF] text-[16px] uppercase font-extrabold"
+              onClick={() => handleEvents(loadMore + 5)}
+            >
+              Ladda fler
+              <BsPlusCircleFill fontSize={22} />
+            </button>
+          ) : (
+            <button
+              className="flex items-center gap-2 text-[#1E40AF] text-[16px] uppercase font-extrabold"
+              onClick={() => handleEvents(5)}
+            >
+              Ladda mindre
+              <BsArrowUpCircleFill fontSize={22} />
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };
