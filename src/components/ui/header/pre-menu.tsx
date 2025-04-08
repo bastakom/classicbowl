@@ -10,7 +10,7 @@ export const PreMenu = ({ settings }: any) => {
           <Link
             href={el.link.cached_url}
             key={index}
-            className="text-white italic text-[11px] lg:text-[14px]"
+            className="text-white italic text-[11px] lg:text-[14px] font-semibold lg:font-normal"
           >
             {el.title}
           </Link>
