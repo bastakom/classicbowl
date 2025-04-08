@@ -21,7 +21,7 @@ import { Textarea } from "../textarea";
 import Link from "next/link";
 import { useState } from "react";
 
-export function Bookingform({ settings, blok, label }: any) {
+export function Bookingform({ settings, blok, label, formTitle }: any) {
   const [checkbox, setCheckbox] = useState(false);
 
   const handleCheckbox = () => {
@@ -35,7 +35,7 @@ export function Bookingform({ settings, blok, label }: any) {
       mail: "",
       phone: "",
       message: "",
-      title: blok?.title || "Okänd titel",
+      title: blok?.title || formTitle,
     },
   });
 

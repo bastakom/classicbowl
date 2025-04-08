@@ -1,7 +1,7 @@
 import { render } from "storyblok-rich-text-react-renderer";
 import { Bookingform } from "./ui/form/booking.form";
 
-export const InfoForm = ({ blok, settings, title }: any) => {
+export const InfoForm = ({ blok, settings, title, formTitle }: any) => {
   return (
     <div
       id="booking-form"
@@ -17,6 +17,7 @@ export const InfoForm = ({ blok, settings, title }: any) => {
         settings={settings}
         blok={blok}
         label={blok?.label_textarea ?? ""}
+        formTitle={formTitle}
       />
     </div>
   );
