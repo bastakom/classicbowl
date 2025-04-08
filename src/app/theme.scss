@@ -57,6 +57,7 @@ a {
   color: $primary-text;
   padding: 30px 45px;
   transition: all 0.3s ease-in-out;
+  font-weight: 800;
 
   &:hover {
     background: $primary-hover;
@@ -66,6 +67,7 @@ a {
 .text-btn {
   background: $primary;
   color: $primary-text;
+  font-weight: 800;
   padding: 10px 15px;
   transition: all 0.3s ease-in-out;
   text-align: center;
@@ -78,6 +80,7 @@ a {
 .text-btn {
   background: $primary;
   color: $primary-text;
+  font-weight: 800;
   padding: 20px 25px;
   transition: all 0.3s ease-in-out;
   text-align: center;

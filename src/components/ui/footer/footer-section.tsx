@@ -69,7 +69,7 @@ export const FooterSection = ({ props }: any) => {
             className="flex lg:hidden items-center gap-2 justify-center mt-12 lg:mt-0"
             onClick={handleDropdown}
           >
-            <h3>ÖPPETTIDER</h3>
+            <h3 className="font-extrabold">ÖPPETTIDER</h3>
             <IoMdArrowDropdown fontSize={25} />
           </div>
           <h3 className="hidden lg:flex  lg:text-[22px] italic uppercase font-extrabold">
@@ -98,7 +98,7 @@ export const FooterSection = ({ props }: any) => {
                 className="text-[22px] font-bold italic flex gap-4 items-center"
                 href={item.link.cached_url}
               >
-                <span className="text-[22px] font-bold italic uppercase">
+                <span className="text-[20px] lg:text-[22px] font-extrabold italic uppercase">
                   {item.title}
                 </span>
                 <HiOutlineArrowSmallRight />
@@ -106,7 +106,7 @@ export const FooterSection = ({ props }: any) => {
             ))}
           </div>
           <div className="flex lg:hidden flex-col items-center lg:items-start gap-4 mt-4">
-            <h3>Följ oss</h3>
+            <h3 className="uppercase font-extrabold">Följ oss</h3>
             <Socials props={props.fields} color={props.header_text_color} />
           </div>
           <span className="hidden lg:flex mt-20 text-[18px] exceptions">

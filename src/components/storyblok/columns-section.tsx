@@ -8,7 +8,7 @@ export const Columns = ({ blok }: any) => {
   return (
     <div className="container-section p-container  lg:my-16 lg:mb-32">
       <div
-        className={`grid gap-10 py-6 ${
+        className={`grid gap-20 lg:gap-10 py-6 ${
           blok.columns === "4"
             ? "lg:grid-cols-4"
             : blok.columns === "3"
@@ -25,7 +25,9 @@ export const Columns = ({ blok }: any) => {
             }`}
             key={item._uid}
           >
-            <h2 className="uppercase text-[35px]">{item.title}</h2>
+            <h2 className="uppercase text-[25px] lg:text-[35px]">
+              {item.title}
+            </h2>
             <span
               className={`${blok.half_width && "lg:max-w-[50%]"} ${
                 blok?.text_center && "mx-auto"

@@ -57,7 +57,7 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
               </div>
               <div
                 className={`${
-                  item.full_width && "grid grid-cols-2 w-[1000px] gap-12 "
+                  item.full_width && "grid grid-cols-2 w-[60vw] gap-12 "
                 }`}
               >
                 {item.menu_item.map((el: any) => (
@@ -120,15 +120,15 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
               >
                 {item.menu_item.map((el: any) => (
                   <div className="flex justify-between mb-6 mt-8">
-                    <div>
-                      <div className="w-[70%] text-[18px] lg:text-[22px] font-semibold">
+                    <div className="w-[60%] lg:w-[100%]">
+                      <div className="w-[100%] lg:w-[70%] text-[18px] lg:text-[22px] font-semibold">
                         {el.title}
                       </div>
                       <div className="text-[16px] font-normal w-[90%]">
                         {el.description}
                       </div>
                     </div>
-                    <div className="text-[18px] w-[25%] lg:text-[22px] font-semibold">
+                    <div className="text-[18px] lg:w-[25%] lg:text-[22px] font-semibold">
                       {el.price}
                     </div>
                   </div>

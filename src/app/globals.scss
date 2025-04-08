@@ -93,7 +93,7 @@ html {
 
 .render-content {
   p {
-    font-size: 18px;
+    font-size: 20px;
     text-transform: uppercase;
   }
 }
@@ -133,7 +133,7 @@ h2 {
     font-size: 18px;
     font-weight: 400;
     color: white;
-    font-style: italic !important;
+    font-style: italic;
   }
 }
 
@@ -144,6 +144,16 @@ h2 {
     font-size: 18px;
   }
 }
+
+.downcase-link {
+  p {
+    a {
+      text-transform: none;
+      font-size: 18px;
+    }
+  }
+}
+
 .cta-button {
   a {
     text-transform: uppercase;
@@ -204,6 +214,7 @@ h2 {
   .image-block-content {
     p {
       font-size: 22px;
+      font-style: italic;
     }
   }
 
@@ -213,6 +224,12 @@ h2 {
         display: block;
         text-align: start;
       }
+    }
+  }
+
+  .render-blogg-content {
+    span {
+      font-size: 22px;
     }
   }
 

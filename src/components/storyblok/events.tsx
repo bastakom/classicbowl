@@ -30,25 +30,32 @@ export const Events = ({ props, blok, evenemang }: any) => {
                 <div>
                   <div className="flex gap-2">
                     <span className="text-[#B71B2F] font-extrabold">
-                      {item.content.Datum.split(" ")[0]}
+                      {item?.content?.Datum?.split(" ")[0]}
                     </span>
                     <span className="text-[#B71B2F] font-extrabold">
-                      {` - ${item.content.Time}`}
+                      {`  ${item?.content?.Time}`}
                     </span>
                   </div>
                   <h3 className="uppercase text-[30px] lg:text-[40px] font-extrabold italic">
                     {item.name}
                   </h3>
                   <div className="text-[22px] font-extrabold uppercase mb-4 lg:mb-0 italic">
-                    {item.content.description}
+                    {item?.content?.description}
                   </div>
                 </div>
-                <div className="flex items-center gap-2 text-[#1E40AF]">
+
+                <div
+                  className={` ${
+                    item?.content.link?.cached_url
+                      ? "flex items-center gap-2 text-[#1E40AF]"
+                      : "hidden"
+                  }`}
+                >
                   <Link
                     href={item?.content.link?.cached_url || "/"}
                     className="text-[16px] uppercase font-extrabold"
                   >
-                    {item?.content.link_title}
+                    {item?.content?.link_title}
                   </Link>
                   <ArrowRight />
                 </div>
