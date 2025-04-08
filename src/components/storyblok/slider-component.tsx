@@ -121,8 +121,15 @@ export const SliderComponent = ({ blok }: any) => {
                   : "hidden"
               }`}
             >
-              <h3 className="lg:text-[60px] font-bold">{item.title}</h3>
-              <p className="text-[18px]">Läs mer</p>
+              <h3 className="text-[40px] lg:text-[60px] font-extrabold italic">
+                {item.title}
+              </h3>
+              <div className="flex items-center gap-2">
+                <p className="text-[16px] font-extrabold uppercase italic">
+                  Läs mer
+                </p>
+                <ArrowRight />
+              </div>
             </div>
             <Image src={item.image.filename} fill alt={item.title} />
           </Link>

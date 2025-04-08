@@ -234,7 +234,11 @@ export const Navigation = ({ props }: HeaderProps) => {
                     </NavigationMenuItem>
                   ) : (
                     <NavigationMenuItem>
-                      <Link href={item.link.cached_url} legacyBehavior passHref>
+                      <Link
+                        href={`/${item.link.cached_url}`}
+                        legacyBehavior
+                        passHref
+                      >
                         <NavigationMenuLink
                           className={`${navigationMenuTriggerStyle()} ${
                             hasBackground ? "!text-black" : ""
@@ -312,7 +316,9 @@ export const Navigation = ({ props }: HeaderProps) => {
                           }}
                         >
                           <IoIosArrowBack />
-                          <div>Tillbaka</div>
+                          <div className="font-semibold text-[11px] uppercase  italic">
+                            Tillbaka
+                          </div>
                         </div>
                         <div className="mt-4 flex flex-col gap-4">
                           {item?.submenu?.map((el: any) => (
@@ -353,20 +359,26 @@ export const Navigation = ({ props }: HeaderProps) => {
             }`}
           >
             <div className="flex flex-col gap-4 text-[18px] text-white mt-6 font-bold">
-              <h3>{props.contact_title}</h3>
-              <div>{render(props.adress)}</div>
+              <h3 className="text-[18px]">{props.contact_title}</h3>
+              <div className="uppercase footer-content">
+                {render(props.adress)}
+              </div>
               <Link
                 href={
                   "https://www.google.com/maps/dir//Byggm%C3%A4staregatan+6,+242+32+H%C3%B6rby/@55.85745,13.571713,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x4653f385ea7bfa19:0x113f1e400d8f7cd5!2m2!1d13.6541129!2d55.8574775?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D"
                 }
-                className="flex gap-2 items-center"
+                className="flex gap-2 items-center text-[18px] uppercase"
               >
                 <div>Hitta oss</div>
                 <HiOutlineArrowRight fontSize={20} />
               </Link>
               <div className="flex flex-col mt-4">
-                <Link href={`tel:${props.phone}`}>{props.phone}</Link>
-                <Link href={`mailto:${props.mail}`}>{props.mail}</Link>
+                <Link href={`tel:${props.phone}`} className="text-[18px]">
+                  {props.phone}
+                </Link>
+                <Link href={`mailto:${props.mail}`} className="text-[18px]">
+                  {props.mail}
+                </Link>
               </div>
             </div>
           </div>

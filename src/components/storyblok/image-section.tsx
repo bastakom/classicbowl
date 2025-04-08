@@ -14,7 +14,7 @@ export const ImageSection = ({ blok }: any) => {
       }`}
       style={{ background: `${blok.bg_color?.color || ""}` }}
     >
-      <div className=" flex flex-col justify-center items-center  w-[100%] text-center ">
+      <div className=" flex flex-col justify-center items-center  w-[100%] text-center mb-5 lg:mb-0 ">
         <div
           className={`flex flex-col gap-5 lg:max-w-[50%] justify-center ${
             blok.text_white && "text-white"
@@ -41,7 +41,7 @@ export const ImageSection = ({ blok }: any) => {
           </div>
         </div>
         <div
-          className={`w-[100%] mt-4 lg:w-[50%] lg:mt-0 h-[350px] lg:h-[545px] relative ${
+          className={`w-[100%] mt-4 lg:w-[50%] lg:mt-0 h-[350px] lg:h-[545px] relative mb-4 ${
             blok.image_right && "order-1"
           }`}
         >

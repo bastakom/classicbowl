@@ -10,7 +10,7 @@ import {
 
 export const Socials = ({ props, color }: any) => {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-5 lg:gap-2">
       {props.map((item: any) => {
         const Icons = (size: any) => {
           switch (item.icons) {

@@ -106,7 +106,7 @@ export const FooterSection = ({ props }: any) => {
             ))}
           </div>
           <div className="flex lg:hidden flex-col items-center lg:items-start gap-4 mt-4">
-            <h3 className="uppercase font-extrabold">Följ oss</h3>
+            <h3 className="uppercase font-extrabold mt-5 lg:mt-0">Följ oss</h3>
             <Socials props={props.fields} color={props.header_text_color} />
           </div>
           <span className="hidden lg:flex mt-20 text-[18px] exceptions">
@@ -125,14 +125,21 @@ export const FooterSection = ({ props }: any) => {
           />
           <span className="text-[16px]">© Classic Bowl Hörby 2025</span>
         </div>
-        <div className="lg:flex gap-5 lg:items-end mt-24 lg:mt-0 mx-auto lg:mx-0">
+        <div className="flex flex-col lg:flex-row lg:flex lg:gap-5 lg:items-end mt-28 lg:mt-0 mx-auto lg:mx-0 gap-5 ">
           <Link
             href="/integritetspolicy"
             style={{ fontStyle: "normal", textTransform: "none" }}
           >
             Integritespolicy
           </Link>
-          <span className="lg:hidden block text-[16px]">
+
+          <Link
+            href="/cookies"
+            style={{ fontStyle: "normal", textTransform: "none" }}
+          >
+            Cookies
+          </Link>
+          <span className="lg:hidden block text-[16px]  lg:pt-0">
             © Classic Bowl Hörby 2025
           </span>
         </div>
