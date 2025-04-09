@@ -9,6 +9,7 @@ import Slider from "react-slick";
 export const SliderComponent = ({ blok }: any) => {
   const [showPrevArrow, setShowPrevArrow] = useState<boolean>(false);
   const [showNextArrow, setShowNextArrow] = useState<boolean>(true);
+  console.log(blok);
 
   const NextArrow = ({ onClick }: any) => (
     <button
@@ -102,38 +103,48 @@ export const SliderComponent = ({ blok }: any) => {
           handleSliderChange(currentSlide, blok.fields.length)
         }
       >
-        {blok.fields.map((item: any, index: number) => (
-          <Link
-            href={item.link.cached_url}
-            className="h-[400px] lg:h-[600px] w-[33%] relative"
-            key={index}
-          >
-            <div
-              className={` ${
-                item.title &&
-                "bg-black absolute opacity-30 top-0 h-full w-full z-10"
-              }`}
-            />
-            <div
-              className={`${
-                item.title
-                  ? "absolute flex-col gap-5 z-20 h-full w-full text-center flex justify-center items-center text-white"
-                  : "hidden"
-              }`}
+        {blok.fields.map((item: any, index: number) => {
+          const isLink = item.link?.cached_url;
+
+          const content = (
+            <>
+              {item.title && (
+                <div className="bg-black absolute opacity-30 top-0 h-full w-full z-10" />
+              )}
+              {item.title && (
+                <div className="absolute flex-col gap-5 z-20 h-full w-full text-center flex justify-center items-center text-white">
+                  <h3 className="text-[40px] lg:text-[60px] font-extrabold italic">
+                    {item.title}
+                  </h3>
+                  <div className="flex items-center gap-2">
+                    <p className="text-[16px] font-extrabold uppercase italic">
+                      Läs mer
+                    </p>
+                    <ArrowRight />
+                  </div>
+                </div>
+              )}
+              <Image src={item.image.filename} fill alt={item.title} />
+            </>
+          );
+
+          return isLink ? (
+            <Link
+              key={index}
+              href={item.link.cached_url}
+              className="h-[400px] lg:h-[600px] w-full md:w-[33%] relative"
             >
-              <h3 className="text-[40px] lg:text-[60px] font-extrabold italic">
-                {item.title}
-              </h3>
-              <div className="flex items-center gap-2">
-                <p className="text-[16px] font-extrabold uppercase italic">
-                  Läs mer
-                </p>
-                <ArrowRight />
-              </div>
+              {content}
+            </Link>
+          ) : (
+            <div
+              key={index}
+              className="h-[400px] lg:h-[600px] w-full md:w-[33%] relative"
+            >
+              {content}
             </div>
-            <Image src={item.image.filename} fill alt={item.title} />
-          </Link>
-        ))}
+          );
+        })}
       </Slider>
     </div>
   );
