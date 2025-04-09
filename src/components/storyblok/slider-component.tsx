@@ -9,7 +9,6 @@ import Slider from "react-slick";
 export const SliderComponent = ({ blok }: any) => {
   const [showPrevArrow, setShowPrevArrow] = useState<boolean>(false);
   const [showNextArrow, setShowNextArrow] = useState<boolean>(true);
-  console.log(blok);
 
   const NextArrow = ({ onClick }: any) => (
     <button
