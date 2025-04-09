@@ -123,7 +123,7 @@ export const SliderComponent = ({ blok }: any) => {
                   </div>
                 </div>
               )}
-              <Image src={item.image.filename} fill alt={item.title} />
+              <Image src={item.image.filename} fill alt={item.title} className="object-cover" />
             </>
           );
 
