@@ -109,17 +109,15 @@ export const SliderComponent = ({ blok }: any) => {
             key={index}
           >
             <div
-              className={` ${
-                item.title &&
+              className={` ${item.title &&
                 "bg-black absolute opacity-30 top-0 h-full w-full z-10"
-              }`}
+                }`}
             />
             <div
-              className={`${
-                item.title
-                  ? "absolute flex-col gap-5 z-20 h-full w-full text-center flex justify-center items-center text-white"
-                  : "hidden"
-              }`}
+              className={`${item.title
+                ? "absolute flex-col gap-5 z-20 h-full w-full text-center flex justify-center items-center text-white"
+                : "hidden"
+                }`}
             >
               <h3 className="text-[40px] lg:text-[60px] font-extrabold italic">
                 {item.title}
@@ -131,7 +129,7 @@ export const SliderComponent = ({ blok }: any) => {
                 <ArrowRight />
               </div>
             </div>
-            <Image src={item.image.filename} fill alt={item.title} />
+            <Image src={item.image.filename} fill alt={item.title} className="object-cover" />
           </Link>
         ))}
       </Slider>
