@@ -113,7 +113,7 @@ export const FooterSection = ({ props }: any) => {
           >
             {props?.seasonal_opening_hours?.map((item: any, i: number) => (
               <div className="flex justify-between" key={i}>
-                <span className="text-[16px] lg:text-[22px] italic">
+                <span className="text-[16px] lg:text-[22px] italic uppercase">
                   {item.day}
                 </span>
                 <p className="text-[16px] lg:text-[22px]  italic">
@@ -128,7 +128,7 @@ export const FooterSection = ({ props }: any) => {
           <div className={`hidden lg:flex flex-col text-[22px]`}>
             {props.opening_hours.map((item: any, i: number) => (
               <div className="flex justify-between" key={i}>
-                <span className="text-[16px] lg:text-[22px] italic">
+                <span className="text-[16px] lg:text-[22px] italic uppercase">
                   {item.day}
                 </span>
                 <p className="text-[16px] lg:text-[22px]  italic">
@@ -144,7 +144,7 @@ export const FooterSection = ({ props }: any) => {
           <div className={`hidden lg:flex flex-col text-[22px] mb-10 `}>
             {props?.seasonal_opening_hours?.map((item: any, i: number) => (
               <div className="flex justify-between" key={i}>
-                <span className="text-[16px] lg:text-[22px] italic">
+                <span className="text-[16px] lg:text-[22px] italic uppercase">
                   {item.day}
                 </span>
                 <p className="text-[16px] lg:text-[22px]  italic">
