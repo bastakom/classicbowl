@@ -39,7 +39,7 @@ export const HeroSection = ({ blok }: HeroProps) => {
           blok?.video
             ? "h-full"
             : blok.small_hero
-            ? "h-[50vh] lg:min-h-[50vh]"
+            ? "h-[50vh] lg:min-h-[60vh]"
             : "min-h-[90vh]"
         } justify-center flex items-center ${
           blok.frame && "mx-auto px-4 container-section mt-20"
@@ -61,15 +61,17 @@ export const HeroSection = ({ blok }: HeroProps) => {
         >
           <div
             style={{ color: `${blok.text_color.color}` }}
-            className="gap-5 flex flex-col text-center lg:text-left"
+            className={`gap-5 flex flex-col text-center lg:text-left ${
+              !blok.text_center && "lg:w-[100%]"
+            }`}
           >
             <h3 className="uppercase text-[20px] lg:text-3xl text-center">
               {blok.sub_text}
             </h3>
             <h1
-              className={`text-[45px] lg:text-[80px] uppercase leading-normal font-extrabold  ${
+              className={`text-[35px] lg:text-[80px] uppercase leading-normal font-extrabold  ${
                 blok.text_center
-                  ? "lg:max-w-[80%] mx-auto text-center"
+                  ? "mx-auto text-center"
                   : "lg:max-w-[80%] text-start"
               }`}
             >

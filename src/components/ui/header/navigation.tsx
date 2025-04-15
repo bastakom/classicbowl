@@ -51,6 +51,12 @@ export const Navigation = ({ props }: HeaderProps) => {
   const [hasBackground, setHasBackground] = useState(false);
   const [submenuClick, setSubmenuClick] = useState(false);
   const [submenuType, setSubmenuType] = useState<string | null>(null);
+  const [isImageVisible, setIsImageVisible] = useState(
+    "247d1986-b5ca-4057-a912-b21058bbf599"
+  );
+  const [isSecondImageVisible, setIsSecondImageVisible] = useState(
+    "d3dcbeea-7de2-465d-994f-514ca6f56843"
+  );
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -79,7 +85,7 @@ export const Navigation = ({ props }: HeaderProps) => {
   }, []);
 
   useEffect(() => {
-    if (submenuClick) {
+    if (open) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -88,7 +94,7 @@ export const Navigation = ({ props }: HeaderProps) => {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [submenuClick]);
+  }, [open]);
 
   const handleOpenMenu = () => {
     setMenuOpen(!open);
@@ -99,6 +105,13 @@ export const Navigation = ({ props }: HeaderProps) => {
     setSubmenuType(item._uid);
   };
 
+  const handleImage = (id: any) => {
+    setIsImageVisible(id);
+  };
+
+  const handleSecondImage = (id: any) => {
+    setIsSecondImageVisible(id);
+  };
   return (
     <nav
       className={`fixed w-full items-center flex justify-between px-5 lg:pl-14 z-30 transition-all duration-300 ${
@@ -134,17 +147,38 @@ export const Navigation = ({ props }: HeaderProps) => {
                       >
                         {item.title}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className=" gap-4 bg-white shadow-lg rounded-md p-4">
+                      <NavigationMenuContent className="flex flex-row gap-4 bg-white shadow-lg rounded-md p-4 h-[47vh]">
+                        <div>
+                          {item.submenu.map((image: any) => (
+                            <div key={image._uid}>
+                              {isImageVisible == image._uid && (
+                                <div className="max-w-[250px] h-[250px] pl-4 pt-4">
+                                  <div className="relative w-[200px] h-[200px] shrink-0">
+                                    <Image
+                                      src={image?.image?.filename || "/"}
+                                      alt={image?.image?.alt || "No alt text"}
+                                      fill
+                                      className="object-cover rounded-md"
+                                    />
+                                  </div>
+                                  <div className="mt-2 text-[16px] italic leading-[25px]">
+                                    {image.description}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
                         <NavigationMenuLink>
                           <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
                             {item.submenu?.map((el: any) => (
                               <Link
                                 href={el.link.cached_url}
-                                className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                                className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 "
                                 key={el.title}
+                                onMouseEnter={() => handleImage(el._uid)}
                               >
-                                <SubMenuIcons props={el} />
-                                <NavigationMenuLink>
+                                <NavigationMenuLink className="font-bold">
                                   {el.title}
                                 </NavigationMenuLink>
                               </Link>
@@ -160,16 +194,37 @@ export const Navigation = ({ props }: HeaderProps) => {
                       >
                         {item.title}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className=" gap-4 bg-white shadow-lg rounded-md p-4">
-                        <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
+                      <NavigationMenuContent className="flex flex-row gap-4 bg-white shadow-lg rounded-md p-4 h-[47vh] ">
+                        <div>
+                          {item.submenu.map((image: any) => (
+                            <div key={image._uid}>
+                              {isSecondImageVisible == image._uid && (
+                                <div className="min-w-[250px] h-[300px] pl-4 pt-4">
+                                  <div className="relative w-[200px] h-[200px] shrink-0">
+                                    <Image
+                                      src={image?.image?.filename || "/"}
+                                      alt={image?.image?.alt || "No alt text"}
+                                      fill
+                                      className="object-cover rounded-md"
+                                    />
+                                  </div>
+                                  <div className="mt-2 text-[16px] italic max-w-[200px] leading-[25px]">
+                                    {image.description}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                        <ul className="grid gap-3 p-4  md:w-[400px] lg:w-[500px] lg:grid-cols-2 h-5">
                           {item.submenu?.map((el: any) => (
                             <Link
                               href={el.link.cached_url}
-                              className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                              className="flex items-center gap-2 px-4 hover:bg-gray-100 h-10 "
                               key={el.title}
+                              onMouseEnter={() => handleSecondImage(el._uid)}
                             >
-                              <SubMenuIcons props={el} />
-                              <NavigationMenuLink>
+                              <NavigationMenuLink className="font-bold ">
                                 {el.title}
                               </NavigationMenuLink>
                             </Link>
@@ -179,7 +234,11 @@ export const Navigation = ({ props }: HeaderProps) => {
                     </NavigationMenuItem>
                   ) : (
                     <NavigationMenuItem>
-                      <Link href={item.link.cached_url} legacyBehavior passHref>
+                      <Link
+                        href={`/${item.link.cached_url}`}
+                        legacyBehavior
+                        passHref
+                      >
                         <NavigationMenuLink
                           className={`${navigationMenuTriggerStyle()} ${
                             hasBackground ? "!text-black" : ""
@@ -231,7 +290,7 @@ export const Navigation = ({ props }: HeaderProps) => {
               data-id="close-sidebar-menu"
             />
           </div>
-          <div className="flex flex-col mt-28 gap-4">
+          <div className="flex flex-col mt-28 gap-4 ">
             {props.meny.map((item: LinkTypes) => {
               if (item.submenu_restaurant || item.submenu_activities) {
                 return (
@@ -249,7 +308,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                     </Link>
 
                     {submenuClick && submenuType === item._uid ? (
-                      <div className="gap-2 fixed bg-[#660708] top-44 px-5 py-14 left-0 flex-col flex text-[32px] z-30 h-auto transition-all duration-300 right-0 ">
+                      <div className="gap-2 fixed bg-[#660708] top-44 px-5 py-14 left-0 flex-col flex text-[32px] z-30 h-auto max-h-[calc(100vh-11rem)] overflow-y-auto transition-all duration-300 right-0 pb-28">
                         <div
                           className="flex gap-2 items-center text-[18px] text-white mt-0"
                           onClick={() => {
@@ -257,7 +316,9 @@ export const Navigation = ({ props }: HeaderProps) => {
                           }}
                         >
                           <IoIosArrowBack />
-                          <div>Tillbaka</div>
+                          <div className="font-semibold text-[11px] uppercase  italic">
+                            Tillbaka
+                          </div>
                         </div>
                         <div className="mt-4 flex flex-col gap-4">
                           {item?.submenu?.map((el: any) => (
@@ -282,7 +343,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                 <Link
                   key={item._uid}
                   onClick={handleOpenMenu}
-                  href={item.link.url}
+                  href={item.link.cached_url}
                   className="text-white text-[30px] font-bold"
                 >
                   {item.title}
@@ -298,20 +359,26 @@ export const Navigation = ({ props }: HeaderProps) => {
             }`}
           >
             <div className="flex flex-col gap-4 text-[18px] text-white mt-6 font-bold">
-              <h3>{props.contact_title}</h3>
-              <div>{render(props.adress)}</div>
+              <h3 className="text-[18px]">{props.contact_title}</h3>
+              <div className="uppercase footer-content">
+                {render(props.adress)}
+              </div>
               <Link
                 href={
                   "https://www.google.com/maps/dir//Byggm%C3%A4staregatan+6,+242+32+H%C3%B6rby/@55.85745,13.571713,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x4653f385ea7bfa19:0x113f1e400d8f7cd5!2m2!1d13.6541129!2d55.8574775?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D"
                 }
-                className="flex gap-2 items-center"
+                className="flex gap-2 items-center text-[18px] uppercase"
               >
                 <div>Hitta oss</div>
                 <HiOutlineArrowRight fontSize={20} />
               </Link>
               <div className="flex flex-col mt-4">
-                <Link href={`tel:${props.phone}`}>{props.phone}</Link>
-                <Link href={`mailto:${props.mail}`}>{props.mail}</Link>
+                <Link href={`tel:${props.phone}`} className="text-[18px]">
+                  {props.phone}
+                </Link>
+                <Link href={`mailto:${props.mail}`} className="text-[18px]">
+                  {props.mail}
+                </Link>
               </div>
             </div>
           </div>

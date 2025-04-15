@@ -11,10 +11,15 @@ import { useState } from "react";
 
 export const FooterSection = ({ props }: any) => {
   const [openDropdown, setOpenDropdown] = useState(false);
+  const [openSecondDropdown, setOpenSecondDropdown] = useState(false);
 
   const handleDropdown = () => {
     setOpenDropdown(!openDropdown);
   };
+  const handleSecondDropdown = () => {
+    setOpenSecondDropdown(!openSecondDropdown);
+  };
+
   return (
     <footer
       className={`text-white mx-auto text-center lg:text-left h-full flex flex-col pt-10 pb-20 
@@ -69,18 +74,75 @@ export const FooterSection = ({ props }: any) => {
             className="flex lg:hidden items-center gap-2 justify-center mt-12 lg:mt-0"
             onClick={handleDropdown}
           >
-            <h3>ÖPPETTIDER</h3>
+            <h3 className="font-extrabold italic uppercase ">
+              {props.ordinary_opening_hours_title}
+            </h3>
             <IoMdArrowDropdown fontSize={25} />
           </div>
-          <h3 className="hidden lg:flex  lg:text-[22px] italic uppercase font-extrabold">
-            ÖPPETTIDER
-          </h3>
           <div
-            className={`lg:flex flex-col text-[22px] ${
+            className={`lg:hidden flex-col text-[22px] mb-10 ${
               openDropdown ? "block" : "hidden"
             }`}
           >
             {props.opening_hours.map((item: any, i: number) => (
+              <div className="flex justify-between" key={i}>
+                <span className="text-[16px] lg:text-[22px] italic">
+                  {item.day}
+                </span>
+                <p className="text-[16px] lg:text-[22px]  italic">
+                  {item.time}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div
+            className="flex lg:hidden items-center gap-2 justify-center -mt-2 lg:mt-0"
+            onClick={handleSecondDropdown}
+          >
+            <h3 className="font-extrabold italic uppercase ">
+              {props?.seasonal_opening_hours_title}
+            </h3>
+            <IoMdArrowDropdown fontSize={25} />
+          </div>
+
+          <div
+            className={`lg:hidden flex-col text-[22px] ${
+              openSecondDropdown ? "block" : "hidden"
+            }`}
+          >
+            {props?.seasonal_opening_hours?.map((item: any, i: number) => (
+              <div className="flex justify-between" key={i}>
+                <span className="text-[16px] lg:text-[22px] italic">
+                  {item.day}
+                </span>
+                <p className="text-[16px] lg:text-[22px]  italic">
+                  {item.time}
+                </p>
+              </div>
+            ))}
+          </div>
+          <h3 className="hidden lg:flex  lg:text-[22px] italic uppercase font-extrabold">
+            {props.ordinary_opening_hours_title}
+          </h3>
+          <div className={`hidden lg:flex flex-col text-[22px]`}>
+            {props.opening_hours.map((item: any, i: number) => (
+              <div className="flex justify-between" key={i}>
+                <span className="text-[16px] lg:text-[22px] italic">
+                  {item.day}
+                </span>
+                <p className="text-[16px] lg:text-[22px]  italic">
+                  {item.time}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="hidden lg:block font-extrabold italic uppercase mt-10 ">
+            {props?.seasonal_opening_hours_title}
+          </h3>
+          <div className={`hidden lg:flex flex-col text-[22px] mb-10 `}>
+            {props?.seasonal_opening_hours?.map((item: any, i: number) => (
               <div className="flex justify-between" key={i}>
                 <span className="text-[16px] lg:text-[22px] italic">
                   {item.day}
@@ -98,7 +160,7 @@ export const FooterSection = ({ props }: any) => {
                 className="text-[22px] font-bold italic flex gap-4 items-center"
                 href={item.link.cached_url}
               >
-                <span className="text-[22px] font-bold italic uppercase">
+                <span className="text-[20px] lg:text-[22px] font-extrabold italic uppercase">
                   {item.title}
                 </span>
                 <HiOutlineArrowSmallRight />
@@ -106,7 +168,7 @@ export const FooterSection = ({ props }: any) => {
             ))}
           </div>
           <div className="flex lg:hidden flex-col items-center lg:items-start gap-4 mt-4">
-            <h3>Följ oss</h3>
+            <h3 className="uppercase font-extrabold mt-5 lg:mt-0">Följ oss</h3>
             <Socials props={props.fields} color={props.header_text_color} />
           </div>
           <span className="hidden lg:flex mt-20 text-[18px] exceptions">
@@ -125,14 +187,21 @@ export const FooterSection = ({ props }: any) => {
           />
           <span className="text-[16px]">© Classic Bowl Hörby 2025</span>
         </div>
-        <div className="lg:flex gap-5 lg:items-end mt-24 lg:mt-0 mx-auto lg:mx-0">
+        <div className="flex flex-col lg:flex-row lg:flex lg:gap-5 lg:items-end mt-28 lg:mt-0 mx-auto lg:mx-0 gap-5 ">
           <Link
             href="/integritetspolicy"
             style={{ fontStyle: "normal", textTransform: "none" }}
           >
             Integritespolicy
           </Link>
-          <span className="lg:hidden block text-[16px]">
+
+          <Link
+            href="/cookies"
+            style={{ fontStyle: "normal", textTransform: "none" }}
+          >
+            Cookies
+          </Link>
+          <span className="lg:hidden block text-[16px]  lg:pt-0">
             © Classic Bowl Hörby 2025
           </span>
         </div>

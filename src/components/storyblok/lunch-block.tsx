@@ -24,7 +24,7 @@ export const LunchBlock = ({ blok }: any) => {
         </div>
       </div>
 
-      <div className="mt-10 lg:mt-20 flex flex-col gap-6 text-center">
+      <div className="mt-10 lg:mt-20 flex flex-col gap-6 text-center px-2 mx-auto lg:px-0">
         {item === 1
           ? blok.first_field.map((item: any, index: number) => (
               <div key={index}>
