@@ -1,9 +1,9 @@
-import { getEvenemangSlug } from "@/lib/actions/get-evenemang-slug";
 import { getData } from "@/lib/actions/get-data";
 import { getThemeSettings } from "@/lib/actions/get-theme-settings";
 import { StoryblokStory } from "@storyblok/react/rsc";
 import { Metadata } from "next";
 import { getEvenemang } from "@/lib/actions/get-evenemang";
+import { notFound } from "next/navigation";
 
 export const generateMetadata = async ({
   params,
@@ -27,9 +27,16 @@ const Page = async ({ params }: { params: Params }) => {
   const settings = await getThemeSettings();
   const evenemang = await getEvenemang();
 
-  return (
-    <StoryblokStory story={story} settings={settings} evenemang={evenemang} />
-  );
+  try {
+    if (!story || !story.content) {
+      return notFound();
+    }
+    return (
+      <StoryblokStory story={story} settings={settings} evenemang={evenemang} />
+    );
+  } catch (error: any) {
+    return notFound();
+  }
 };
 
 export default Page;
