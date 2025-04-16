@@ -136,26 +136,9 @@ export function Bookingform({ settings, blok, label, formTitle }: any) {
                 )}
               />
 
-              {/* <div className="flex flex-col gap-1">
-                <FormLabel>Antal vuxna</FormLabel>
-                <Select>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Välj antal" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1">1</SelectItem>
-                    <SelectItem value="2">2</SelectItem>
-                    <SelectItem value="3">3</SelectItem>
-                    <SelectItem value="4">4</SelectItem>
-                    <SelectItem value="5">5</SelectItem>
-                    <SelectItem value="6">6</SelectItem>
-                    <SelectItem value="many">7 eller fler</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div> */}
               <FormField
                 control={form.control}
-                name="adults" // detta fält måste finnas i ditt schema
+                name="adults"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Antal vuxna</FormLabel>
@@ -182,7 +165,7 @@ export function Bookingform({ settings, blok, label, formTitle }: any) {
 
               <FormField
                 control={form.control}
-                name="children" // detta fält måste finnas i ditt schema
+                name="children"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Antal barn</FormLabel>
@@ -206,24 +189,6 @@ export function Bookingform({ settings, blok, label, formTitle }: any) {
                   </FormItem>
                 )}
               />
-
-              {/* <div className="flex flex-col gap-1">
-                <FormLabel>Antal barn</FormLabel>
-                <Select>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Välj antal" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1">1</SelectItem>
-                    <SelectItem value="2">2</SelectItem>
-                    <SelectItem value="3">3</SelectItem>
-                    <SelectItem value="4">4</SelectItem>
-                    <SelectItem value="5">5</SelectItem>
-                    <SelectItem value="6">6</SelectItem>
-                    <SelectItem value="many">7 eller fler</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div> */}
             </div>
             <FormField
               control={form.control}
