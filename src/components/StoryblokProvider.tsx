@@ -23,6 +23,7 @@ import { LunchBlock } from "./storyblok/lunch-block";
 import { InfoForm } from "./info-and-form";
 import { Events } from "./storyblok/events";
 import { PolicyBlock } from "./storyblok/policy-block";
+import { ImageForm } from "./storyblok/image-form";
 
 storyblokInit({
   components: {
@@ -48,6 +49,7 @@ storyblokInit({
     info_and_form: InfoForm,
     events: Events,
     integritet_block: PolicyBlock,
+    image_form: ImageForm,
   },
 
   enableFallbackComponent: true,
