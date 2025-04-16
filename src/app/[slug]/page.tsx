@@ -1,9 +1,14 @@
 import { getData } from "@/lib/actions/get-data";
 import { getThemeSettings } from "@/lib/actions/get-theme-settings";
-import { StoryblokStory } from "@storyblok/react/rsc";
+import { apiPlugin, storyblokInit, StoryblokStory } from "@storyblok/react/rsc";
 import { Metadata } from "next";
 import { getEvenemang } from "@/lib/actions/get-evenemang";
 import { notFound } from "next/navigation";
+
+storyblokInit({
+  accessToken: process.env.STORYBLOK_TOKEN,
+  use: [apiPlugin],
+});
 
 export const generateMetadata = async ({
   params,
