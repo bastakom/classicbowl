@@ -4,6 +4,12 @@ import { getEvenemangSlug } from "@/lib/actions/get-evenemang-slug";
 import { notFound } from "next/navigation";
 import { getThemeSettings } from "@/lib/actions/get-theme-settings";
 import { Metadata } from "next";
+import { apiPlugin, storyblokInit } from "@storyblok/react";
+
+storyblokInit({
+  accessToken: process.env.STORYBLOK_TOKEN,
+  use: [apiPlugin],
+});
 
 export const generateMetadata = async ({
   params,
