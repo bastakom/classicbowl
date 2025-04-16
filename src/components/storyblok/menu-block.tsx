@@ -103,14 +103,7 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
                   >
                     {item.title}
                   </div>
-                  {/* <MdOutlineArrowDropDown
-                    fontSize={50}
-                    className={`${
-                      openDropdown && selectedId == item._uid
-                        ? "rotate-180"
-                        : "rotate-0"
-                    }`}
-                  /> */}
+
                   <GoPlus
                     fontSize={30}
                     className="shrink-0 text-black bg-[#F5F3F4] rounded-full p-[5px] transition-transform duration-200 "
@@ -147,7 +140,7 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
           ))}
         </div>
       </div>
-      {props.show_form && <ContactForm settings={settings} />}
+      {/* {props.show_form && <ContactForm settings={settings} />} */}
     </div>
   );
 };
