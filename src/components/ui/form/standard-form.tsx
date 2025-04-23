@@ -15,20 +15,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { formSchema } from "./schemas/form-schema";
 import { Textarea } from "../textarea";
+import { render } from "storyblok-rich-text-react-renderer";
 import Link from "next/link";
 import { useState } from "react";
 
-export function Bookingform({ settings, blok, label, formTitle }: any) {
+export function StandardForm({ settings }: any) {
   const [checkbox, setCheckbox] = useState(false);
 
   const handleCheckbox = () => {
@@ -42,15 +36,12 @@ export function Bookingform({ settings, blok, label, formTitle }: any) {
       mail: "",
       phone: "",
       message: "",
-      adults: "",
-      children: "",
-      title: blok?.title || formTitle,
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const response = await fetch("/api/booking", {
+      const response = await fetch("/api/standard-form", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -79,15 +70,21 @@ export function Bookingform({ settings, blok, label, formTitle }: any) {
   }
 
   return (
-    <div className="w-[100%] mt-5">
+    <>
+      <div className=" flex flex-col items-center text-white lg:mb-10">
+        <h3 className="italic text-[25px] uppercase font-bold">
+          {settings.content.title}
+        </h3>
+        <div className="form-info">{render(settings.content.info_content)}</div>
+      </div>
       <Toaster closeButton={true} />
-      <div className="flex flex-col items-end -mt-5 lg:mt-0">
+      <div className="flex flex-col items-center">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4 my-14 lg:w-[80%] flex flex-col gap-4"
+            className="space-y-4 my-14 lg:w-[80%] flex flex-col gap-5"
           >
-            <div>
+            <div className="grid lg:grid-cols-2 gap-7">
               <FormField
                 control={form.control}
                 name="name"
@@ -95,23 +92,6 @@ export function Bookingform({ settings, blok, label, formTitle }: any) {
                   <FormItem>
                     <FormLabel>
                       {settings.content.form_name_placeholder}
-                    </FormLabel>
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div className="grid lg:grid-cols-2 gap-7">
-              <FormField
-                control={form.control}
-                name="mail"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      {settings.content.form_mail_placeholder}
                     </FormLabel>
                     <FormControl>
                       <Input {...field} />
@@ -135,56 +115,19 @@ export function Bookingform({ settings, blok, label, formTitle }: any) {
                   </FormItem>
                 )}
               />
-
+            </div>
+            <div>
               <FormField
                 control={form.control}
-                name="adults"
+                name="mail"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Antal vuxna</FormLabel>
-                    <Select onValueChange={field.onChange} value={field.value}>
-                      <FormControl>
-                        <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Välj antal" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="1">1</SelectItem>
-                        <SelectItem value="2">2</SelectItem>
-                        <SelectItem value="3">3</SelectItem>
-                        <SelectItem value="4">4</SelectItem>
-                        <SelectItem value="5">5</SelectItem>
-                        <SelectItem value="6">6</SelectItem>
-                        <SelectItem value="many">7 eller fler</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="children"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Antal barn</FormLabel>
-                    <Select onValueChange={field.onChange} value={field.value}>
-                      <FormControl>
-                        <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Välj antal" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="1">1</SelectItem>
-                        <SelectItem value="2">2</SelectItem>
-                        <SelectItem value="3">3</SelectItem>
-                        <SelectItem value="4">4</SelectItem>
-                        <SelectItem value="5">5</SelectItem>
-                        <SelectItem value="6">6</SelectItem>
-                        <SelectItem value="many">7 eller fler</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <FormLabel>
+                      {settings.content.form_mail_placeholder}
+                    </FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -195,8 +138,9 @@ export function Bookingform({ settings, blok, label, formTitle }: any) {
               name="message"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{label || ""}</FormLabel>
-
+                  <FormLabel>
+                    {settings.content.from_textarea_placeholder}
+                  </FormLabel>
                   <FormControl>
                     <Textarea {...field} />
                   </FormControl>
@@ -211,29 +155,31 @@ export function Bookingform({ settings, blok, label, formTitle }: any) {
                 onClick={() => handleCheckbox()}
                 checked={checkbox}
               />
-              <div className="grid gap-1.5 ">
+              <div className="grid gap-1.5 leading-none">
                 <label
                   htmlFor="terms1"
-                  className="text-[18px] lg:text-lg font-medium leading-[1.5rem] peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white font"
+                  className="text-lg font-medium lg:leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white"
                 >
                   Vi värnar om din integritet och hanterar dina uppgifter med
-                  största omsorg. Läs mer om hur vi behandlar personuppgifter i
-                  vår{" "}
+                  största omsorg.
+                </label>
+                <p className="text-lg text-white">
+                  Läs mer om hur vi behandlar personuppgifter i vår{" "}
                   <Link
                     href={"/integritetspolicy"}
                     className="normal-case text-lg font-extrabold not-italic"
                   >
                     integritetspolicy.
                   </Link>
-                </label>
+                </p>
               </div>
             </div>
-            <div className="flex justify-start">
+            <div className="flex justify-center">
               <Button type="submit">Skicka</Button>
             </div>
           </form>
         </Form>
       </div>
-    </div>
+    </>
   );
 }
