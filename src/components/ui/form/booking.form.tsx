@@ -220,7 +220,7 @@ export function Bookingform({ settings, blok, label, formTitle }: any) {
                   största omsorg. Läs mer om hur vi behandlar personuppgifter i
                   vår{" "}
                   <Link
-                    href={"/"}
+                    href={"/integritetspolicy"}
                     className="normal-case text-lg font-extrabold not-italic"
                   >
                     integritetspolicy.
