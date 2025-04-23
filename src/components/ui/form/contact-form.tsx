@@ -182,7 +182,7 @@ export function ContactForm({ settings }: any) {
                 <p className="text-lg text-white">
                   Läs mer om hur vi behandlar personuppgifter i vår{" "}
                   <Link
-                    href={"/"}
+                    href={"/integritetspolicy"}
                     className="normal-case text-lg font-extrabold not-italic"
                   >
                     integritetspolicy.
