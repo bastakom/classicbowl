@@ -36,7 +36,7 @@ export const ImageBlock = ({ blok }: ImageBlockProps) => {
             style={{ backgroundColor: item.background_color.color }}
             className="w-full h-full"
           >
-            <div className="px-5 pt-40 lg:p-20 flex flex-col lg:justify-end h-[100%] gap-5 text-white ">
+            <div className="px-5 pt-40 lg:p-10 flex flex-col lg:justify-end h-[100%] gap-5 text-white ">
               <Link
                 href={item.link.cached_url}
                 style={{ textTransform: "none" }}
