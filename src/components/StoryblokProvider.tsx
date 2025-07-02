@@ -24,6 +24,7 @@ import { InfoForm } from "./info-and-form";
 import { Events } from "./storyblok/events";
 import { PolicyBlock } from "./storyblok/policy-block";
 import { ImageForm } from "./storyblok/image-form";
+import { OppetTider } from "./storyblok/oppet-tider";
 
 storyblokInit({
   components: {
@@ -50,6 +51,7 @@ storyblokInit({
     events: Events,
     integritet_block: PolicyBlock,
     image_form: ImageForm,
+    oppet_tider: OppetTider
   },
 
   enableFallbackComponent: true,
