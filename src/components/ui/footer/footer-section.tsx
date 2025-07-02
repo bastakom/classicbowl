@@ -80,9 +80,8 @@ export const FooterSection = ({ props }: any) => {
             <IoMdArrowDropdown fontSize={25} />
           </div>
           <div
-            className={`lg:hidden flex-col text-[22px] mb-10 ${
-              openDropdown ? "block" : "hidden"
-            }`}
+            className={`lg:hidden flex-col text-[22px] mb-10 ${openDropdown ? "block" : "hidden"
+              }`}
           >
             {props.opening_hours.map((item: any, i: number) => (
               <div className="flex justify-between" key={i}>
@@ -107,9 +106,8 @@ export const FooterSection = ({ props }: any) => {
           </div>
 
           <div
-            className={`lg:hidden flex-col text-[22px] ${
-              openSecondDropdown ? "block" : "hidden"
-            }`}
+            className={`lg:hidden flex-col text-[22px] ${openSecondDropdown ? "block" : "hidden"
+              }`}
           >
             {props?.seasonal_opening_hours?.map((item: any, i: number) => (
               <div className="flex justify-between" key={i}>
@@ -138,21 +136,29 @@ export const FooterSection = ({ props }: any) => {
             ))}
           </div>
 
-          <h3 className="hidden lg:block font-extrabold italic uppercase mt-10 ">
-            {props?.seasonal_opening_hours_title}
-          </h3>
-          <div className={`hidden lg:flex flex-col text-[22px] mb-10 `}>
-            {props?.seasonal_opening_hours?.map((item: any, i: number) => (
-              <div className="flex justify-between" key={i}>
-                <span className="text-[16px] lg:text-[22px] italic uppercase">
-                  {item.day}
-                </span>
-                <p className="text-[16px] lg:text-[22px]  italic">
-                  {item.time}
-                </p>
-              </div>
-            ))}
-          </div>
+          {props?.seasonal_opening_hours_title &&
+            <h3 className="hidden lg:block font-extrabold italic uppercase mt-10 ">
+              {props?.seasonal_opening_hours_title}
+            </h3>}
+          {props?.seasonal_opening_hours.length < 0 &&
+            <div className={`hidden lg:flex flex-col text-[22px] mb-10 `}>
+              {props?.seasonal_opening_hours?.map((item: any, i: number) => (
+                <div className="flex justify-between" key={i}>
+                  <span className="text-[16px] lg:text-[22px] italic uppercase">
+                    {item.day}
+                  </span>
+                  <p className="text-[16px] lg:text-[22px]  italic">
+                    {item.time}
+                  </p>
+                </div>
+              ))}
+            </div>
+          }
+          {props?.sasong_title &&
+            <div className="my-8">
+              <Link href={props.sasong_link.cached_url} className="italic underline underline-offset-2">{props.sasong_title}</Link>
+            </div>
+          }
           <div className="flex flex-col items-center lg:items-start mt-10 lg:mt-0 ">
             {props.footer_menu.map((item: LinkTypes, i: number) => (
               <Link
