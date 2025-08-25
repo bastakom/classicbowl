@@ -26,12 +26,11 @@ export const Events = ({ props, blok, evenemang }: any) => {
           .sort((a: any, b: any) => {
             const dateA = new Date(a.content.Datum).getTime();
             const dateB = new Date(b.content.Datum).getTime();
-
             return dateA - dateB;
           })
           .slice(0, loadMore)
-          .map((item: any) => (
-            <div key={item._uid}>
+          .map((item: any, i: number) => (
+            <div key={i}>
               <div className="lg:flex justify-between mt-12">
                 <div>
                   <div className="flex gap-2">
@@ -51,14 +50,13 @@ export const Events = ({ props, blok, evenemang }: any) => {
                 </div>
 
                 <div
-                  className={` ${
-                    item?.content.link?.cached_url
-                      ? "flex items-center gap-2 text-[#1E40AF]"
-                      : "hidden"
-                  }`}
+                  className={` ${item?.content.link?.cached_url
+                    ? "flex items-center gap-2 text-[#1E40AF]"
+                    : "hidden"
+                    }`}
                 >
                   <Link
-                    href={item?.content.link?.cached_url || "/"}
+                    href={item?.full_slug || "/"}
                     className="text-[16px] uppercase font-extrabold"
                   >
                     {item?.content?.link_title}
@@ -73,11 +71,10 @@ export const Events = ({ props, blok, evenemang }: any) => {
 
       {blok.show_less_events ? (
         <div
-          className={`${
-            evenemang.length >= loadMore
-              ? "flex justify-center mt-10 lg:mt-16"
-              : "hidden"
-          }`}
+          className={`${evenemang.length >= loadMore
+            ? "flex justify-center mt-10 lg:mt-16"
+            : "hidden"
+            }`}
         >
           <Link
             href={"/kommande-evenemang"}
