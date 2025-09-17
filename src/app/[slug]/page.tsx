@@ -4,6 +4,7 @@ import { apiPlugin, storyblokInit, StoryblokStory } from "@storyblok/react/rsc";
 import { Metadata } from "next";
 import { getEvenemang } from "@/lib/actions/get-evenemang";
 import { notFound } from "next/navigation";
+import ExtraFooterSection from "@/components/ui/extra_footer";
 
 storyblokInit({
   accessToken: process.env.STORYBLOK_TOKEN,
@@ -17,7 +18,6 @@ export const generateMetadata = async ({
 }): Promise<Metadata> => {
   const pathname = params.slug;
   const data = await getData(pathname);
-
   return {
     title: data?.content?.SEO?.title || data?.name,
     description: data?.content?.SEO?.description || "Default description",
@@ -25,6 +25,7 @@ export const generateMetadata = async ({
 };
 
 type Params = Promise<{ slug: string }>;
+
 const Page = async ({ params }: { params: Params }) => {
   const pathname = (await params).slug;
   const slugName = pathname === undefined ? `home` : pathname;
@@ -37,7 +38,12 @@ const Page = async ({ params }: { params: Params }) => {
       return notFound();
     }
     return (
-      <StoryblokStory story={story} settings={settings} evenemang={evenemang} />
+      <>
+        <StoryblokStory story={story} settings={settings} evenemang={evenemang} />
+        {story.content.extra_footer && settings.content.extra_fields && (
+          <ExtraFooterSection extraFields={settings.content.extra_fields} />
+        )}
+      </>
     );
   } catch (error: any) {
     return notFound();
