@@ -133,7 +133,6 @@ export const Navigation = ({ props }: HeaderProps) => {
       <div className={`hidden lg:flex`}>
         <div className="flex">
           {props.meny.map((item: LinkTypes) => {
-            console.log(item);
             return (
               <NavigationMenu key={item._uid}>
                 <NavigationMenuList>
@@ -347,8 +346,8 @@ export const Navigation = ({ props }: HeaderProps) => {
           </div>
           <div
             className={`${submenuClick
-                ? "hidden"
-                : "block border-t-[0.5px] border-white mt-20 w-[100%]"
+              ? "hidden"
+              : "block border-t-[0.5px] border-white mt-20 w-[100%]"
               }`}
           >
             <div className="flex flex-col gap-4 text-[18px] text-white mt-6 font-bold">
