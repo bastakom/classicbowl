@@ -3,12 +3,12 @@ import { useState } from "react";
 import { GoPlus } from "react-icons/go";
 
 export const MenuBlock = ({ blok, settings, props }: any) => {
-  const [selectedId, setSelectedId] = useState("");
+  const [selectedId, setSelectedId] = useState("5b022951-69c9-47e7-afb4-78f91e29d5df");
 
   const handleDropdown = (id: string) => {
-    // If clicking the same item, close it. If clicking a different item, open that one.
     setSelectedId(selectedId === id ? "" : id);
   };
+
 
   return (
     <div>
