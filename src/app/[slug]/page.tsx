@@ -32,7 +32,6 @@ const Page = async ({ params }: { params: Params }) => {
   const story = await getData(slugName);
   const settings = await getThemeSettings();
   const evenemang = await getEvenemang();
-  console.log(settings.content.extra_fields)
 
   try {
     if (!story || !story.content) {
