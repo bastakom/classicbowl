@@ -16,7 +16,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { SubMenuIcons } from "../submenu-icons/submenu-icons";
 import { render } from "storyblok-rich-text-react-renderer";
 import { PreMenu } from "./pre-menu";
 import { TfiClose } from "react-icons/tfi";
@@ -114,13 +113,11 @@ export const Navigation = ({ props }: HeaderProps) => {
   };
   return (
     <nav
-      className={`fixed w-full items-center flex justify-between px-5 lg:pl-14 z-30 transition-all duration-300 ${
-        isMenuVisible ? "top-0 opacity-100" : "-top-20 opacity-0"
-      } ${
-        hasBackground
+      className={`fixed w-full items-center flex justify-between px-5 lg:pl-14 z-30 transition-all duration-300 ${isMenuVisible ? "top-0 opacity-100" : "-top-20 opacity-0"
+        } ${hasBackground
           ? "bg-white lg:mt-0 py-4 lg:py-5 "
           : "bg-transparent mt-16 lg:mt-20"
-      }`}
+        }`}
     >
       <Link href="/">
         <Image
@@ -128,15 +125,15 @@ export const Navigation = ({ props }: HeaderProps) => {
           alt={props.site_title}
           width={137}
           height={50}
-          className={`z-50 ${
-            hasBackground ? "absolute top-4" : "fixed top-[3.2rem]"
-          } ${open ? "hidden" : "block"}`}
+          className={`z-50 ${hasBackground ? "absolute top-4" : "fixed top-[3.2rem]"
+            } ${open ? "hidden" : "block"}`}
         />
       </Link>
 
       <div className={`hidden lg:flex`}>
         <div className="flex">
           {props.meny.map((item: LinkTypes) => {
+            console.log(item);
             return (
               <NavigationMenu key={item._uid}>
                 <NavigationMenuList>
@@ -240,9 +237,8 @@ export const Navigation = ({ props }: HeaderProps) => {
                         passHref
                       >
                         <NavigationMenuLink
-                          className={`${navigationMenuTriggerStyle()} ${
-                            hasBackground ? "!text-black" : ""
-                          }`}
+                          className={`${navigationMenuTriggerStyle()} ${hasBackground ? "!text-black" : ""
+                            }`}
                         >
                           {item.title}
                         </NavigationMenuLink>
@@ -257,18 +253,16 @@ export const Navigation = ({ props }: HeaderProps) => {
       </div>
 
       <div
-        className={`lg:hidden z-50 relative top-3  ${
-          !hasBackground ? "text-white" : "text-black"
-        } ${open ? "hidden" : "block"}`}
+        className={`lg:hidden z-50 relative top-3  ${!hasBackground ? "text-white" : "text-black"
+          } ${open ? "hidden" : "block"}`}
         data-id="open-menu"
       >
         <Hamburger toggled={open} toggle={setMenuOpen} />
       </div>
 
       <div
-        className={`gap-2 fixed bg-[#660708] -top-20 h-full w-full mt-20  py-14 left-0 flex-col flex text-[32px] z-20 transition-all duration-300 right-0 overflow-y-auto ${
-          !open ? "translate-x-full" : "translate-x-0"
-        }`}
+        className={`gap-2 fixed bg-[#660708] -top-20 h-full w-full mt-20  py-14 left-0 flex-col flex text-[32px] z-20 transition-all duration-300 right-0 overflow-y-auto ${!open ? "translate-x-full" : "translate-x-0"
+          }`}
       >
         <div className="relative -top-10 border-b-[0.5px] border-white w-[100%]">
           <PreMenu settings={props.pre_menu} />
@@ -352,11 +346,10 @@ export const Navigation = ({ props }: HeaderProps) => {
             })}
           </div>
           <div
-            className={`${
-              submenuClick
+            className={`${submenuClick
                 ? "hidden"
                 : "block border-t-[0.5px] border-white mt-20 w-[100%]"
-            }`}
+              }`}
           >
             <div className="flex flex-col gap-4 text-[18px] text-white mt-6 font-bold">
               <h3 className="text-[18px]">{props.contact_title}</h3>
