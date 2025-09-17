@@ -24,7 +24,7 @@ export const ImageSection = ({ blok }: any) => {
               {blok.title}
             </h2>
           )}
-          {blok.content && <span>{render(blok.content)}</span>}
+          {blok?.content && <span>{render(blok?.content)}</span>}
           <div>
             {blok.buttons.map((item: LinkTypes) => (
               <Button

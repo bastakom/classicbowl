@@ -3,18 +3,26 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Slider from "react-slick";
 
 export const SliderComponent = ({ blok }: any) => {
   const [showPrevArrow, setShowPrevArrow] = useState<boolean>(false);
   const [showNextArrow, setShowNextArrow] = useState<boolean>(true);
+  const [isClient, setIsClient] = useState<boolean>(false);
+
+  const sliderRef = useRef<Slider>(null);
+
+  // Ensure component only renders on client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const NextArrow = ({ onClick }: any) => (
     <button
       className="custom-next-arrow"
       onClick={onClick}
-      disabled={showNextArrow ? false : true}
+      disabled={!showNextArrow}
     >
       <ArrowRight
         fontSize={"3.5rem"}
@@ -27,13 +35,11 @@ export const SliderComponent = ({ blok }: any) => {
     <button
       className="custom-prev-arrow"
       onClick={onClick}
-      disabled={showPrevArrow ? false : true}
+      disabled={!showPrevArrow}
     >
       <ArrowLeft fontSize={"3.5rem"} color={showPrevArrow ? "black" : "grey"} />
     </button>
   );
-
-  const sliderRef = useRef<Slider>(null);
 
   const nextSlide = () => {
     if (sliderRef.current) {
@@ -47,22 +53,15 @@ export const SliderComponent = ({ blok }: any) => {
     }
   };
 
-  const handleSliderChange = (currentSlide: number, slideCount: number) => {
-    setShowPrevArrow(currentSlide > 0);
-    if (currentSlide + settings.slidesToShow >= slideCount) {
-      setShowNextArrow(false);
-    } else {
-      setShowNextArrow(true);
-    }
-  };
   const settings = {
     dots: false,
     infinite: false,
     arrows: false,
-    autoplay: false,
+    autoplay: true,
     speed: 500,
     slidesToShow: 2.5,
     slidesToScroll: 2,
+    lazyLoad: 'ondemand' as const,
     responsive: [
       {
         breakpoint: 600,
@@ -82,6 +81,20 @@ export const SliderComponent = ({ blok }: any) => {
     ],
   };
 
+  const handleSliderChange = (currentSlide: number, slideCount: number) => {
+    setShowPrevArrow(currentSlide > 0);
+    if (currentSlide + settings.slidesToShow >= slideCount) {
+      setShowNextArrow(false);
+    } else {
+      setShowNextArrow(true);
+    }
+  };
+
+  // Early return if not client side or no data
+  if (!isClient || !blok?.fields?.length) {
+    return null;
+  }
+
   return (
     <div className={`container-section my-14 flex flex-col gap-5 relative`}>
       <h2 className="text-center uppercase text-[25px]">{blok.title}</h2>
@@ -95,14 +108,14 @@ export const SliderComponent = ({ blok }: any) => {
         </div>
       )}
       <Slider
-        key="1"
+        key={`slider-${blok.fields.length}`}
         {...settings}
         ref={sliderRef}
         afterChange={(currentSlide: number) =>
           handleSliderChange(currentSlide, blok.fields.length)
         }
       >
-        {blok.fields.map((item: any, index: number) => {
+        {blok?.fields?.map((item: any, index: number) => {
           const isLink = item.link?.cached_url;
 
           const content = (
@@ -123,7 +136,15 @@ export const SliderComponent = ({ blok }: any) => {
                   </div>
                 </div>
               )}
-              <Image src={item.image.filename} fill alt={item.title} className="object-cover" />
+              {item?.image?.filename && (
+                <Image
+                  src={item.image.filename}
+                  fill
+                  alt={item.title || 'Slide image'}
+                  className="object-cover"
+                  sizes="(max-width: 480px) 100vw, (max-width: 600px) 50vw, 40vw"
+                />
+              )}
             </>
           );
 
