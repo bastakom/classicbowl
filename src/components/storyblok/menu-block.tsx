@@ -75,7 +75,6 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
             <div className="mt-6" key={index}>
               <div
                 className="flex flex-col items-center justify-center gap-2"
-                onClick={() => handleDropdown(item._uid)}
               >
                 <div className="flex justify-center items-center gap-5">
                   <div
@@ -86,12 +85,6 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
                   >
                     {item.title}
                   </div>
-
-                  <GoPlus
-                    fontSize={30}
-                    className={`shrink-0 text-black bg-[#F5F3F4] rounded-full p-[5px] transition-transform duration-200 ${selectedId === item._uid ? "rotate-45" : ""
-                      }`}
-                  />
                 </div>
                 <div className="menu-content mt-2 mb-4">
                   {render(item.content)}
@@ -100,7 +93,7 @@ export const MenuBlock = ({ blok, settings, props }: any) => {
               </div>
 
               <div
-                className={`${selectedId === item._uid ? "block" : "hidden"}`}
+                className={`block`}
               >
                 {item.menu_item.map((el: any) => (
                   <div className="flex justify-between mb-6 mt-8">
