@@ -15,9 +15,18 @@ export const metadata: Metadata = {
 };
 
 const cachedFetch = (input: any, init?: any): Promise<Response> => {
-  return fetch(input, {
+  const url = new URL(input);
+  url.searchParams.append('cb', Date.now().toString());
+
+  return fetch(url.toString(), {
     ...init,
     cache: "no-cache",
+    headers: {
+      ...init?.headers,
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0'
+    }
   });
 };
 
@@ -26,6 +35,10 @@ storyblokInit({
   use: [apiPlugin],
   apiOptions: {
     fetch: cachedFetch,
+    cache: {
+      clear: 'auto',
+      type: 'memory'
+    }
   },
 });
 
