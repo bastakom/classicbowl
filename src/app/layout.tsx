@@ -15,18 +15,9 @@ export const metadata: Metadata = {
 };
 
 const cachedFetch = (input: any, init?: any): Promise<Response> => {
-  const url = new URL(input);
-  url.searchParams.append('cb', Date.now().toString());
-
-  return fetch(url.toString(), {
+  return fetch(input, {
     ...init,
     cache: "no-cache",
-    headers: {
-      ...init?.headers,
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-      'Pragma': 'no-cache',
-      'Expires': '0'
-    }
   });
 };
 
@@ -35,10 +26,6 @@ storyblokInit({
   use: [apiPlugin],
   apiOptions: {
     fetch: cachedFetch,
-    cache: {
-      clear: 'auto',
-      type: 'memory'
-    }
   },
 });
 
@@ -54,15 +41,6 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
-          <Script src="https://consent.cookiebot.com/uc.js" />
-          <script
-            id="Cookiebot"
-            src="https://consent.cookiebot.com/uc.js"
-            data-cbid="e4839e0a-3b70-4003-a104-2946ec2f9560"
-            data-blockingmode="manual"
-            type="text/javascript"
-            async
-          ></script>
         </body>
       </html>
     </StoryblokProvider>
