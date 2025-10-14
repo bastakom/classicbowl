@@ -50,16 +50,11 @@ export const Navigation = ({ props }: HeaderProps) => {
   const [hasBackground, setHasBackground] = useState(false);
   const [submenuClick, setSubmenuClick] = useState(false);
   const [submenuType, setSubmenuType] = useState<string | null>(null);
-  const [isImageVisible, setIsImageVisible] = useState(
-    "247d1986-b5ca-4057-a912-b21058bbf599"
-  );
-  const [isSecondImageVisible, setIsSecondImageVisible] = useState(
-    "d3dcbeea-7de2-465d-994f-514ca6f56843"
-  );
+  const [isImageVisible, setIsImageVisible] = useState("247d1986-b5ca-4057-a912-b21058bbf599");
+  const [isSecondImageVisible, setIsSecondImageVisible] = useState("d3dcbeea-7de2-465d-994f-514ca6f56843");
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
-    let isMobile = window.innerWidth <= 408;
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -113,11 +108,9 @@ export const Navigation = ({ props }: HeaderProps) => {
   };
   return (
     <nav
-      className={`fixed w-full items-center flex justify-between px-5 lg:pl-14 z-30 transition-all duration-300 ${isMenuVisible ? "top-0 opacity-100" : "-top-20 opacity-0"
-        } ${hasBackground
-          ? "bg-white lg:mt-0 py-4 lg:py-5 "
-          : "bg-transparent mt-16 lg:mt-20"
-        }`}
+      className={`fixed w-full items-center flex justify-between px-5 lg:pl-14 z-30 transition-all duration-300 ${
+        isMenuVisible ? "top-0 opacity-100" : "-top-20 opacity-0"
+      } ${hasBackground ? "bg-white lg:mt-0 py-4 lg:py-5 " : "bg-transparent mt-16 lg:mt-20"}`}
     >
       <Link href="/">
         <Image
@@ -125,8 +118,7 @@ export const Navigation = ({ props }: HeaderProps) => {
           alt={props.site_title}
           width={137}
           height={50}
-          className={`z-50 ${hasBackground ? "absolute top-4" : "fixed top-[3.2rem]"
-            } ${open ? "hidden" : "block"}`}
+          className={`z-50 ${hasBackground ? "absolute top-4" : "fixed top-[3.2rem]"} ${open ? "hidden" : "block"}`}
         />
       </Link>
 
@@ -138,11 +130,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                 <NavigationMenuList>
                   {item.submenu_restaurant ? (
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger
-                        className={`italic ${hasBackground && "text-black"}`}
-                      >
-                        {item.title}
-                      </NavigationMenuTrigger>
+                      <NavigationMenuTrigger className={`italic ${hasBackground && "text-black"}`}>{item.title}</NavigationMenuTrigger>
                       <NavigationMenuContent className="flex flex-row gap-4 bg-white shadow-lg rounded-md p-4 h-[47vh]">
                         <div>
                           {item.submenu.map((image: any) => (
@@ -157,9 +145,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                                       className="object-cover rounded-md"
                                     />
                                   </div>
-                                  <div className="mt-2 text-[16px] italic leading-[25px]">
-                                    {image.description}
-                                  </div>
+                                  <div className="mt-2 text-[16px] italic leading-[25px]">{image.description}</div>
                                 </div>
                               )}
                             </div>
@@ -169,14 +155,12 @@ export const Navigation = ({ props }: HeaderProps) => {
                           <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
                             {item.submenu?.map((el: any) => (
                               <Link
-                                href={el.link.cached_url}
+                                href={`/${el.link.cached_url}`}
                                 className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 "
                                 key={el.title}
                                 onMouseEnter={() => handleImage(el._uid)}
                               >
-                                <NavigationMenuLink className="font-bold">
-                                  {el.title}
-                                </NavigationMenuLink>
+                                <NavigationMenuLink className="font-bold">{el.title}</NavigationMenuLink>
                               </Link>
                             ))}
                           </ul>
@@ -185,11 +169,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                     </NavigationMenuItem>
                   ) : item.submenu_activities ? (
                     <NavigationMenuItem>
-                      <NavigationMenuTrigger
-                        className={`italic ${hasBackground && "text-black"}`}
-                      >
-                        {item.title}
-                      </NavigationMenuTrigger>
+                      <NavigationMenuTrigger className={`italic ${hasBackground && "text-black"}`}>{item.title}</NavigationMenuTrigger>
                       <NavigationMenuContent className="flex flex-row gap-4 bg-white shadow-lg rounded-md p-4 h-[47vh] ">
                         <div>
                           {item.submenu.map((image: any) => (
@@ -204,9 +184,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                                       className="object-cover rounded-md"
                                     />
                                   </div>
-                                  <div className="mt-2 text-[16px] italic max-w-[200px] leading-[25px]">
-                                    {image.description}
-                                  </div>
+                                  <div className="mt-2 text-[16px] italic max-w-[200px] leading-[25px]">{image.description}</div>
                                 </div>
                               )}
                             </div>
@@ -215,14 +193,12 @@ export const Navigation = ({ props }: HeaderProps) => {
                         <ul className="grid gap-3 p-4  md:w-[400px] lg:w-[500px] lg:grid-cols-2 h-5">
                           {item.submenu?.map((el: any) => (
                             <Link
-                              href={el.link.cached_url}
+                              href={`/${el.link.cached_url}`}
                               className="flex items-center gap-2 px-4 hover:bg-gray-100 h-10 "
                               key={el.title}
                               onMouseEnter={() => handleSecondImage(el._uid)}
                             >
-                              <NavigationMenuLink className="font-bold ">
-                                {el.title}
-                              </NavigationMenuLink>
+                              <NavigationMenuLink className="font-bold ">{el.title}</NavigationMenuLink>
                             </Link>
                           ))}
                         </ul>
@@ -230,15 +206,8 @@ export const Navigation = ({ props }: HeaderProps) => {
                     </NavigationMenuItem>
                   ) : (
                     <NavigationMenuItem>
-                      <Link
-                        href={`/${item.link.cached_url}`}
-                        legacyBehavior
-                        passHref
-                      >
-                        <NavigationMenuLink
-                          className={`${navigationMenuTriggerStyle()} ${hasBackground ? "!text-black" : ""
-                            }`}
-                        >
+                      <Link href={`/${item.link.cached_url}`} legacyBehavior passHref>
+                        <NavigationMenuLink className={`${navigationMenuTriggerStyle()} ${hasBackground ? "!text-black" : ""}`}>
                           {item.title}
                         </NavigationMenuLink>
                       </Link>
@@ -252,16 +221,16 @@ export const Navigation = ({ props }: HeaderProps) => {
       </div>
 
       <div
-        className={`lg:hidden z-50 relative top-3  ${!hasBackground ? "text-white" : "text-black"
-          } ${open ? "hidden" : "block"}`}
+        className={`lg:hidden z-50 relative top-3  ${!hasBackground ? "text-white" : "text-black"} ${open ? "hidden" : "block"}`}
         data-id="open-menu"
       >
         <Hamburger toggled={open} toggle={setMenuOpen} />
       </div>
 
       <div
-        className={`gap-2 fixed bg-[#660708] -top-20 h-full w-full mt-20  py-14 left-0 flex-col flex text-[32px] z-20 transition-all duration-300 right-0 overflow-y-auto ${!open ? "translate-x-full" : "translate-x-0"
-          }`}
+        className={`gap-2 fixed bg-[#660708] -top-20 h-full w-full mt-20  py-14 left-0 flex-col flex text-[32px] z-20 transition-all duration-300 right-0 overflow-y-auto ${
+          !open ? "translate-x-full" : "translate-x-0"
+        }`}
       >
         <div className="relative -top-10 border-b-[0.5px] border-white w-[100%]">
           <PreMenu settings={props.pre_menu} />
@@ -269,19 +238,9 @@ export const Navigation = ({ props }: HeaderProps) => {
         <div className="px-5">
           <div className="flex justify-between w-[100%] -mt-9">
             <Link href="/">
-              <Image
-                src={props.logo.filename}
-                alt={props.site_title}
-                width={150}
-                height={50}
-                className={`z-50 fixed top-20`}
-              />
+              <Image src={props.logo.filename} alt={props.site_title} width={150} height={50} className={`z-50 fixed top-20`} />
             </Link>
-            <TfiClose
-              className="text-white"
-              onClick={handleOpenMenu}
-              data-id="close-sidebar-menu"
-            />
+            <TfiClose className="text-white" onClick={handleOpenMenu} data-id="close-sidebar-menu" />
           </div>
           <div className="flex flex-col mt-28 gap-4 ">
             {props.meny.map((item: LinkTypes) => {
@@ -309,9 +268,7 @@ export const Navigation = ({ props }: HeaderProps) => {
                           }}
                         >
                           <IoIosArrowBack />
-                          <div className="font-semibold text-[11px] uppercase  italic">
-                            Tillbaka
-                          </div>
+                          <div className="font-semibold text-[11px] uppercase  italic">Tillbaka</div>
                         </div>
                         <div className="mt-4 flex flex-col gap-4">
                           {item?.submenu?.map((el: any) => (
@@ -333,28 +290,16 @@ export const Navigation = ({ props }: HeaderProps) => {
               }
 
               return (
-                <Link
-                  key={item._uid}
-                  onClick={handleOpenMenu}
-                  href={item.link.cached_url}
-                  className="text-white text-[30px] font-bold"
-                >
+                <Link key={item._uid} onClick={handleOpenMenu} href={item.link.cached_url} className="text-white text-[30px] font-bold">
                   {item.title}
                 </Link>
               );
             })}
           </div>
-          <div
-            className={`${submenuClick
-              ? "hidden"
-              : "block border-t-[0.5px] border-white mt-20 w-[100%]"
-              }`}
-          >
+          <div className={`${submenuClick ? "hidden" : "block border-t-[0.5px] border-white mt-20 w-[100%]"}`}>
             <div className="flex flex-col gap-4 text-[18px] text-white mt-6 font-bold">
               <h3 className="text-[18px]">{props.contact_title}</h3>
-              <div className="uppercase footer-content">
-                {render(props.adress)}
-              </div>
+              <div className="uppercase footer-content">{render(props.adress)}</div>
               <Link
                 href={
                   "https://www.google.com/maps/dir//Byggm%C3%A4staregatan+6,+242+32+H%C3%B6rby/@55.85745,13.571713,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x4653f385ea7bfa19:0x113f1e400d8f7cd5!2m2!1d13.6541129!2d55.8574775?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D"
