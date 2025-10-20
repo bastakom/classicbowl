@@ -62,6 +62,11 @@ a {
   &:hover {
     background: $primary-hover;
   }
+  @media screen and (max-width: 870px) {
+    &:hover {
+      background: $primary;
+    }
+  }
 }
 
 .text-btn {
@@ -74,6 +79,12 @@ a {
 
   &:hover {
     background: $primary-hover;
+  }
+
+  @media screen and (max-width: 870px) {
+    &:hover {
+      background: $primary;
+    }
   }
 }
 
