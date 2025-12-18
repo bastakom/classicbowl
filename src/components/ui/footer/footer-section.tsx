@@ -8,10 +8,12 @@ import { render } from "storyblok-rich-text-react-renderer";
 import { Socials } from "../socials/socials";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useState } from "react";
+import { ArrowUp } from "lucide-react";
 
 export const FooterSection = ({ props }: any) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openSecondDropdown, setOpenSecondDropdown] = useState(false);
+  const [isSeasonOpen, setIsSeasonOpen] = useState(false);
 
   const handleDropdown = () => {
     setOpenDropdown(!openDropdown);
@@ -137,10 +139,10 @@ export const FooterSection = ({ props }: any) => {
           </div>
 
           {props?.seasonal_opening_hours_title &&
-            <h3 className="hidden lg:block font-extrabold italic uppercase mt-10 ">
-              {props?.seasonal_opening_hours_title}
-            </h3>}
-          {props?.seasonal_opening_hours.length < 0 &&
+            <button onClick={() => setIsSeasonOpen(!isSeasonOpen)} className="hidden lg:flex gap-4 items-center font-extrabold text-[22px] italic uppercase mt-10 ">
+              {props?.seasonal_opening_hours_title} {!isSeasonOpen ? <HiOutlineArrowSmallRight size={20} /> : <ArrowUp size={20} />}
+            </button>}
+          {props?.seasonal_opening_hours.length != 0 && isSeasonOpen &&
             <div className={`hidden lg:flex flex-col text-[22px] mb-10 `}>
               {props?.seasonal_opening_hours?.map((item: any, i: number) => (
                 <div className="flex justify-between" key={i}>

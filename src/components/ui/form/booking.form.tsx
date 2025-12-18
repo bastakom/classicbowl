@@ -44,6 +44,7 @@ export function Bookingform({ settings, blok, label, formTitle }: any) {
       message: "",
       adults: "",
       children: "",
+      antal: "",
       title: blok?.title || formTitle,
     },
   });
@@ -138,37 +139,10 @@ export function Bookingform({ settings, blok, label, formTitle }: any) {
 
               <FormField
                 control={form.control}
-                name="adults"
+                name="antal"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Antal vuxna</FormLabel>
-                    <Select onValueChange={field.onChange} value={field.value}>
-                      <FormControl>
-                        <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Välj antal" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="1">1</SelectItem>
-                        <SelectItem value="2">2</SelectItem>
-                        <SelectItem value="3">3</SelectItem>
-                        <SelectItem value="4">4</SelectItem>
-                        <SelectItem value="5">5</SelectItem>
-                        <SelectItem value="6">6</SelectItem>
-                        <SelectItem value="many">7 eller fler</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="children"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Antal barn</FormLabel>
+                    <FormLabel>Antal</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger className="w-full">

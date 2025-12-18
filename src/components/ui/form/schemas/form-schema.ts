@@ -17,5 +17,6 @@ export const formSchema = z.object({
   message: z.string(),
   title: z.string().optional(),
   adults: z.string().optional(),
+  antal: z.string().optional(),
   children: z.string().optional(),
 });

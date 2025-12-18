@@ -4,7 +4,7 @@ const usermail = process.env.MARKNAD_EMAIL;
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
-  const { name, mail, message, phone, title, adults, children } =
+  const { name, mail, message, phone, title, antal } =
     await req.json();
 
   const messageBody = `
@@ -14,8 +14,7 @@ export async function POST(req: Request) {
       <h3>Email: ${mail}</h3>
       <p>tel: ${phone}</p>
       <p>Meddelande: ${message}</p>
-       <p>Antal vuxna: ${adults}</p>
-        <p>Antal barn: ${children == undefined ? "0" : children}</p>
+       <p>Antal: ${antal}</p>
     </div>
   `;
   try {
